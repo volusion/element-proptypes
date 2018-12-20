@@ -16,31 +16,21 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c --watch",
-    "prepare": "npm run build && npm run test:all",
+    "prepare": "npm run build && npm run test",
     "release": "npm run prepare && np",
-    "test:all": "NODE_ENV=production npm run test",
     "test": "jest",
     "test:watch": "jest --watch"
   },
   "jest": {
     "rootDir": "src",
-    "verbose": true,
     "transform": {
-      "^.+\\.js$": "babel-jest",
-      "^.+\\.jsx$": "babel-jest"
-    },
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ]
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
-    "babel-jest": "23.0.1",
+    "babel-jest": "^23.6.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-latest": "^6.24.1",
@@ -49,7 +39,7 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-security": "^1.4.0",
-    "jest": "23.1.0",
+    "jest": "^23.6.0",
     "np": "^3.1.0",
     "prettier": "^1.13.3",
     "rollup": "^0.59.2",
