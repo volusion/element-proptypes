@@ -210,12 +210,6 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 We're very excited that you're interested in contributing! At present, we are not accepting contributions for this repo, but that might change in the future. However, we are very interested in your suggestions for new `PropTypes` that you want to have in this package. You can make your suggestions by opening an issue. We do already have a [Code of Conduct](CODE_OF_CONDUCT.md) in place.
 
-## Authors
-
-- **Chris Boette** &mdash; [chrisbodhi](https://github.com/chrisbodhi)
-- **Greg Murray** &mdash; [greg-murray-volusion](https://github.com/greg-murray-volusion)
-- **Santiago Oquendo** &mdash; [santios](https://github.com/santios)
-
 ## Code of Conduct
 
 Our Code of Conduct, by way of the Contributor Covenant, [can be found here](CODE_OF_CONDUCT.md).
