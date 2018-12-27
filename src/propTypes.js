@@ -9,7 +9,7 @@ function getShim() {
     return shim;
 }
 
-['array', 'bool', 'string', 'color', 'number', 'media'].forEach(type => {
+['array', 'bool', 'string', 'color', 'number', 'media', 'editorFull', 'editorMinimal'].forEach(type => {
     PropTypes[type] = getShim();
 });
 
@@ -76,6 +76,8 @@ const ElementPropTypes = {
     bool: primitiveProp('bool'),
     color: primitiveProp('color'),
     media: primitiveProp('media'),
+    editorFull: primitiveProp('editorFull'),
+    editorMinimal: primitiveProp('editorMinimal'),
     number: primitiveProp('number'),
     string: primitiveProp('string'),
     arrayOf: createTypeOfTypeChecker('arrayOf'),
