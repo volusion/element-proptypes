@@ -26,8 +26,8 @@ let props = {
   optionalString: ElementPropTypes.string,
   optionalColor: ElementPropTypes.color,
   optionalMedia: ElementPropTypes.media,
-  optionalMedia: ElementPropTypes.editorFull,
-  optionalMedia: ElementPropTypes.editorMinimal,
+  optionalEditorFull: ElementPropTypes.editorFull,
+  optionalEditorMinimal: ElementPropTypes.editorMinimal,
 
   // You can make them required too
   requiredArray: ElementPropTypes.array,
@@ -36,8 +36,8 @@ let props = {
   requiredString: ElementPropTypes.string,
   requiredColor: ElementPropTypes.color,
   requiredMedia: ElementPropTypes.media,
-  requiredMedia: ElementPropTypes.editorFull,
-  requiredMedia: ElementPropTypes.editorMinimal,
+  requiredEditorFull: ElementPropTypes.editorFull,
+  requiredEditorMinimal: ElementPropTypes.editorMinimal,
 
   // You can ensure that your prop is limited to specific values by treating
   // it as an enum.
