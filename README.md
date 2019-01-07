@@ -26,6 +26,8 @@ let props = {
   optionalString: ElementPropTypes.string,
   optionalColor: ElementPropTypes.color,
   optionalMedia: ElementPropTypes.media,
+  optionalEditorFull: ElementPropTypes.editorFull,
+  optionalEditorMinimal: ElementPropTypes.editorMinimal,
 
   // You can make them required too
   requiredArray: ElementPropTypes.array,
@@ -34,6 +36,8 @@ let props = {
   requiredString: ElementPropTypes.string,
   requiredColor: ElementPropTypes.color,
   requiredMedia: ElementPropTypes.media,
+  requiredEditorFull: ElementPropTypes.editorFull,
+  requiredEditorMinimal: ElementPropTypes.editorMinimal,
 
   // You can ensure that your prop is limited to specific values by treating
   // it as an enum.
@@ -97,6 +101,12 @@ const meta = extractMetadata(props);
   'Optional Media': {
       type: 'media'
   },
+  'Optional Editor Full': {
+      type: 'editorFull'
+  },
+  'Optional Editor Minimal': {
+      type: 'editorMinimal'
+  },
   'Required Array': {
       type: 'array',
       isRequired: true
@@ -119,6 +129,14 @@ const meta = extractMetadata(props);
   },
   'Required Media': {
       type: 'media',
+      isRequired: true
+  },
+  'Required Editor Full': {
+      type: 'editorFull',
+      isRequired: true
+  },
+  'Required Editor Minimal': {
+      type: 'editorMinimal',
       isRequired: true
   },
   'Optional Enum': {

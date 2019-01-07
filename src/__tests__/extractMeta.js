@@ -102,6 +102,46 @@ describe('Metadata extractor', () => {
         });
     });
 
+    it('Extracts metadata from editorFull type', () => {
+        const props = {
+            editorFullProp: ElementPropTypes.editorFull,
+            editorFullPropRequired: ElementPropTypes.editorFull.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['Editor Full Prop']).toEqual({
+            propName: 'editorFullProp',
+            type: 'editorFull'
+        });
+
+        expect(extracted['Editor Full Prop Required']).toEqual({
+            propName: 'editorFullPropRequired',
+            type: 'editorFull',
+            isRequired: true
+        });
+    });
+
+    it('Extracts metadata from editorMinimal type', () => {
+        const props = {
+            editorMinimalProp: ElementPropTypes.editorMinimal,
+            editorMinimalPropRequired: ElementPropTypes.editorMinimal.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['Editor Minimal Prop']).toEqual({
+            propName: 'editorMinimalProp',
+            type: 'editorMinimal'
+        });
+
+        expect(extracted['Editor Minimal Prop Required']).toEqual({
+            propName: 'editorMinimalPropRequired',
+            type: 'editorMinimal',
+            isRequired: true
+        });
+    });
+
     it('Extracts metadata from arrayOf prop', () => {
         const props = {
             someNumbers: ElementPropTypes.arrayOf(ElementPropTypes.number),
