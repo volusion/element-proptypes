@@ -7,6 +7,7 @@ way, we can do cool things like automatic form generation of block configuration
 
 - [Using the Proptypes](#using-the-proptypes)
 - [Developing](#developing)
+- [Using editFull proptype ](#using-editor-proptype)
 - [Contributing](#contributing)
 - [Authors](#authors)
 - [License](#license)
@@ -213,6 +214,26 @@ npm run build
 ```
 
 Run `npm run build` every time you want to compile and transpile your code.
+
+### Using editor proptype
+When using the `editorFull` and `editorMinimal` proptypes within a block, you will first need to add the prop to the block `configSpec`
+```js
+configSpec = {
+    myEditableText: ElementPropTypes.editorFull.isRequired
+}
+```
+
+You will also need to add a default value for the `myEditableText` property on the `defaultProps` of the object
+```js
+defaultProps = {
+    myEditableText = "<p>Some text to edit</p>"
+}
+```
+
+Lastly, in order to inject the HTML into your component you will need to pass it in using `dangerouslySetInnerHTML`
+```js
+<div dangerouslySetInnerHTML={{ __html: this.props.myEditableText  }} />
+```
 
 
 ### Versioning
