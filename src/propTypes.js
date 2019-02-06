@@ -9,11 +9,11 @@ function getShim() {
     return shim;
 }
 
-['array', 'bool', 'string', 'color', 'number', 'media', 'editorFull', 'editorMinimal'].forEach(type => {
+['array', 'bool', 'string', 'color', 'number', 'media', 'editorFull', 'editorMinimal', 'readOnly'].forEach(type => {
     PropTypes[type] = getShim();
 });
 
-['objectOf', 'arrayOf', 'oneOf', 'shape'].forEach(type => {
+['objectOf', 'arrayOf', 'oneOf', 'shape', 'embeddable'].forEach(type => {
     PropTypes[type] = getShim;
 });
 
@@ -50,7 +50,7 @@ const createEnumTypeChecker = expectedValues => {
     return appliedChecker;
 };
 
-const createShapeTypeChecker = shapeObj => {
+const createShapeTypeChecker = type => shapeObj => {
     const appliedChecker = PropTypes.shape(shapeObj);
     const objMeta = {};
     Object.keys(shapeObj).forEach(key => {
@@ -61,7 +61,7 @@ const createShapeTypeChecker = shapeObj => {
     });
 
     appliedChecker._meta = {
-        type: 'shape',
+        type,
         objMeta
     };
     appliedChecker.isRequired._meta = {
@@ -82,8 +82,10 @@ const ElementPropTypes = {
     string: primitiveProp('string'),
     arrayOf: createTypeOfTypeChecker('arrayOf'),
     objectOf: createTypeOfTypeChecker('objectOf'),
+    embeddable: createShapeTypeChecker('embeddable'),
     oneOf: createEnumTypeChecker,
-    shape: createShapeTypeChecker
+    shape: createShapeTypeChecker('shape'),
+    readOnly: primitiveProp('readOnly')
 };
 
 export default ElementPropTypes;

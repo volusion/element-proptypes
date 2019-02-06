@@ -266,4 +266,49 @@ describe('Metadata extractor', () => {
             isRequired: true
         });
     });
+
+    it('Extracts metadata from embeddable type', () => {
+
+        const props = {
+            anIframe: ElementPropTypes.embeddable({
+                embedType: ElementPropTypes.string,
+                url: ElementPropTypes.string,
+                height: ElementPropTypes.number
+            })
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['An Iframe']).toEqual({
+            propName: 'anIframe',
+            type: 'embeddable',
+            objMeta: {
+                'Embed Type': {
+                    propName: 'embedType',
+                    type: 'string'
+                },
+                'Url': {
+                    propName: 'url',
+                    type: 'string'
+                },
+                'Height': {
+                    propName: 'height',
+                    type: 'number'
+                }
+            }
+        });
+    });
+
+    it('Extracts metadata from readOnly type', () => {
+        const props = {
+            aReadOnly: ElementPropTypes.readOnly
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['A Read Only']).toEqual({
+            propName: 'aReadOnly',
+            type: 'readOnly'
+        });
+    });
 });
