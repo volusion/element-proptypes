@@ -29,7 +29,7 @@ let props = {
   optionalMedia: ElementPropTypes.media,
   optionalEditorFull: ElementPropTypes.editorFull,
   optionalEditorMinimal: ElementPropTypes.editorMinimal,
-  optionalReadonly: ElementPropTypes.readonly,
+  optionalReadOnly: ElementPropTypes.readOnly,
 
   // You can make them required too
   requiredArray: ElementPropTypes.array,
