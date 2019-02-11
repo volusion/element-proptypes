@@ -29,6 +29,7 @@ let props = {
   optionalMedia: ElementPropTypes.media,
   optionalEditorFull: ElementPropTypes.editorFull,
   optionalEditorMinimal: ElementPropTypes.editorMinimal,
+  optionalReadOnly: ElementPropTypes.readOnly,
 
   // You can make them required too
   requiredArray: ElementPropTypes.array,
@@ -64,14 +65,19 @@ let props = {
     color: ElementPropTypes.color,
     fontFamily: ElementPropTypes.string,
     fontSize: ElementPropTypes.number
-  })
+  }),
 
   // A required object taking on a particular shape
   RequiredObjectWithShape: ElementPropTypes.shape({
     color: ElementPropTypes.color,
     fontFamily: ElementPropTypes.string,
     fontSize: ElementPropTypes.number
-  }).isRequired
+  }).isRequired,
+
+  // An embeddable prop.
+  Embeddable: ElementPropTypes.embeddable({
+    embedType: ElementPropTypes.string,
+  })
 }
 ```
 
@@ -107,6 +113,9 @@ const meta = extractMetadata(props);
   },
   'Optional Editor Minimal': {
       type: 'editorMinimal'
+  },
+  'Optional Read Only': {
+      type: 'readOnly'
   },
   'Required Array': {
       type: 'array',
@@ -190,7 +199,7 @@ const meta = extractMetadata(props);
         type: 'number'
       }
     }
-  })
+  },
   'Required Object With Shape': {
     objMeta: {
      'Color': {
@@ -201,7 +210,15 @@ const meta = extractMetadata(props);
       }
     },
     isRequired: true
-  })
+  },
+  'Embeddable': {
+    objMeta: {
+     'Embed Type': {
+        type: 'string'
+      },
+    }
+  },
+
 }
 
 ```
@@ -216,6 +233,7 @@ npm run build
 Run `npm run build` every time you want to compile and transpile your code.
 
 ### Using editor proptype
+
 When using the `editorFull` and `editorMinimal` proptypes within a block, you will first need to add the prop to the block `configSpec`
 ```js
 configSpec = {
@@ -234,6 +252,36 @@ Lastly, in order to inject the HTML into your component you will need to pass it
 ```js
 <div dangerouslySetInnerHTML={{ __html: this.props.myEditableText  }} />
 ```
+
+### Using the embeddable proptype
+
+Currently, only `iframe` is supported as an embeddable. You must specify a block config like this one:
+
+```
+configSpec = {
+    iFrameConfig: ElementPropTypes.embeddable({
+        embedType: ElementPropTypes.string,
+        url: ElementPropTypes.string,
+        height: ElementPropTypes.number
+    })
+};
+```
+
+And for the default props, use something like this:
+
+```
+defaultProps = {
+    iFrameConfig: {
+        embedType: 'iframe',
+        url: 'https://www.site.com',
+        height: 800
+    }
+}
+```
+
+`url` is the site you want to load in the embedded iframe, and `height` is the number representing the height of
+the iframe.
+
 
 
 ### Versioning
