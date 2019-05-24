@@ -102,6 +102,66 @@ describe('Metadata extractor', () => {
         });
     });
 
+    it('Extracts metadata from product type', () => {
+        const props = {
+            productProp: ElementPropTypes.product,
+            productPropRequired: ElementPropTypes.product.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['Product Prop']).toEqual({
+            propName: 'productProp',
+            type: 'product'
+        });
+
+        expect(extracted['Product Prop Required']).toEqual({
+            propName: 'productPropRequired',
+            type: 'product',
+            isRequired: true
+        });
+    });
+
+    it('Extracts metadata from category type', () => {
+        const props = {
+            categoryProp: ElementPropTypes.category,
+            categoryPropRequired: ElementPropTypes.category.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['Category Prop']).toEqual({
+            propName: 'categoryProp',
+            type: 'category'
+        });
+
+        expect(extracted['Category Prop Required']).toEqual({
+            propName: 'categoryPropRequired',
+            type: 'category',
+            isRequired: true
+        });
+    });
+
+    it('Extracts metadata from sectionHeader type', () => {
+        const props = {
+            sectionHeaderProp: ElementPropTypes.sectionHeader,
+            sectionHeaderPropRequired: ElementPropTypes.sectionHeader.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['Section Header Prop']).toEqual({
+            propName: 'sectionHeaderProp',
+            type: 'sectionHeader'
+        });
+
+        expect(extracted['Section Header Prop Required']).toEqual({
+            propName: 'sectionHeaderPropRequired',
+            type: 'sectionHeader',
+            isRequired: true
+        });
+    });
+
     it('Extracts metadata from editorFull type', () => {
         const props = {
             editorFullProp: ElementPropTypes.editorFull,
@@ -173,9 +233,8 @@ describe('Metadata extractor', () => {
     it('Extracts metadata from objectOf prop', () => {
         const props = {
             anObject: ElementPropTypes.objectOf(ElementPropTypes.string),
-            anObjectRequired: ElementPropTypes.objectOf(
-                ElementPropTypes.string
-            ).isRequired
+            anObjectRequired: ElementPropTypes.objectOf(ElementPropTypes.string)
+                .isRequired
         };
 
         const extracted = extractMetadata(props);
@@ -268,7 +327,6 @@ describe('Metadata extractor', () => {
     });
 
     it('Extracts metadata from embeddable type', () => {
-
         const props = {
             anIframe: ElementPropTypes.embeddable({
                 embedType: ElementPropTypes.string,
@@ -287,15 +345,48 @@ describe('Metadata extractor', () => {
                     propName: 'embedType',
                     type: 'string'
                 },
-                'Url': {
+                Url: {
                     propName: 'url',
                     type: 'string'
                 },
-                'Height': {
+                Height: {
                     propName: 'height',
                     type: 'number'
                 }
             }
+        });
+    });
+
+    it('Extracts metadata from image type', () => {
+        const props = {
+            imageProp: ElementPropTypes.image,
+            imagePropRequired: ElementPropTypes.image.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['Image Prop']).toEqual({
+            propName: 'imageProp',
+            type: 'image'
+        });
+
+        expect(extracted['Image Prop Required']).toEqual({
+            propName: 'imagePropRequired',
+            type: 'image',
+            isRequired: true
+        });
+    });
+
+    it('Returns a default config for the image type', () => {
+        const props = {
+            imageProp: ElementPropTypes.image
+        };
+        expect(props.imageProp.default).toEqual({
+            uriBase: '',
+            imagePath: '',
+            altText: '',
+            width: 0,
+            height: 0
         });
     });
 

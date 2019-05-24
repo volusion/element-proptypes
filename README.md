@@ -26,6 +26,10 @@ let props = {
   optionalNumber: ElementPropTypes.number,
   optionalString: ElementPropTypes.string,
   optionalColor: ElementPropTypes.color,
+  optionalProduct: ElementPropTypes.product,
+  optionalCategory: ElementPropTypes.category,
+  optionalCategory: ElementPropTypes.sectionHeader,
+  optionalImage: ElementPropTypes.image,
   optionalMedia: ElementPropTypes.media,
   optionalEditorFull: ElementPropTypes.editorFull,
   optionalEditorMinimal: ElementPropTypes.editorMinimal,
@@ -37,6 +41,10 @@ let props = {
   requiredNumber: ElementPropTypes.number,
   requiredString: ElementPropTypes.string,
   requiredColor: ElementPropTypes.color,
+  requiredProduct: ElementPropTypes.product,
+  requiredCategory: ElementPropTypes.category,
+  requiredCategory: ElementPropTypes.sectionHeader,
+  requiredImage: ElementPropTypes.image,
   requiredMedia: ElementPropTypes.media,
   requiredEditorFull: ElementPropTypes.editorFull,
   requiredEditorMinimal: ElementPropTypes.editorMinimal,
@@ -105,6 +113,15 @@ const meta = extractMetadata(props);
   'Optional Color': {
       type: 'color'
   },
+  'Optional Product': {
+      type: 'color'
+  },
+  'Optional Category': {
+      type: 'color'
+  },
+  'Optional Section Header': {
+      type: 'sectionHeader'
+  },
   'Optional Media': {
       type: 'media'
   },
@@ -135,6 +152,18 @@ const meta = extractMetadata(props);
   },
   'Required Color': {
       type: 'color',
+      isRequired: true
+  },
+  'Required Product': {
+      type: 'product',
+      isRequired: true
+  },
+  'Required Category': {
+      type: 'category',
+      isRequired: true
+  },
+  'Required Section Header': {
+      type: 'sectionHeader',
       isRequired: true
   },
   'Required Media': {
@@ -211,6 +240,55 @@ const meta = extractMetadata(props);
     },
     isRequired: true
   },
+  'Optional Image': {
+    objMeta: {
+        'Uri Base': {
+            propName: 'uriBase',
+            type: 'string'
+        },
+        'Image Path': {
+            propName: 'imagePath',
+            type: 'string'
+        },
+        'Alt Text': {
+            propName: 'altText',
+            type: 'string'
+        },
+        Width: {
+            propName: 'width',
+            type: 'number'
+        },
+        Height: {
+            propName: 'height',
+            type: 'number'
+        }
+    }
+  },
+  'Required Image': {
+    objMeta: {
+        'Uri Base': {
+            propName: 'uriBase',
+            type: 'string'
+        },
+        'Image Path': {
+            propName: 'imagePath',
+            type: 'string'
+        },
+        'Alt Text': {
+            propName: 'altText',
+            type: 'string'
+        },
+        Width: {
+            propName: 'width',
+            type: 'number'
+        },
+        Height: {
+            propName: 'height',
+            type: 'number'
+        }
+    },
+    isRequired: true
+  },
   'Embeddable': {
     objMeta: {
      'Embed Type': {
@@ -231,6 +309,40 @@ npm run build
 ```
 
 Run `npm run build` every time you want to compile and transpile your code.
+
+### Using the product proptype
+
+The `product` proptype will launch a product picker when editing a block config in Site Designer, and store the product id when a product from the store is selected. When using the `product` proptype within a block, you will need to add the prop to the block `configSpec`
+```js
+configSpec = {
+    myProduct: ElementPropTypes.product
+}
+```
+
+### Using the category proptype
+
+The `category` proptype will launch a category picker when editing a block config in Site Designer, and store the product id when a category from the store is selected. When using the `category` proptype within a block, you will need to add the prop to the block `configSpec`
+```js
+configSpec = {
+    myCategory: ElementPropTypes.category
+}
+```
+
+### Using the sectionHeader proptype
+
+The `sectionHeader` proptype is not editable in Site Designer - it is included so that it can be used to format the contents of the block config edit form in Site Designer. When using the `sectionHeader` proptype within a block, you will need to add the prop to the block `configSpec`
+```js
+configSpec = {
+    mySectionHeader: ElementPropTypes.sectionHeader
+}
+```
+
+You will also need to add a default value for the `mySectionHeader` property on the `defaultProps` of the object
+```js
+defaultProps = {
+    mySectionHeader = "The header text for this section of the block config editing form"
+}
+```
 
 ### Using editor proptype
 
@@ -282,6 +394,40 @@ defaultProps = {
 `url` is the site you want to load in the embedded iframe, and `height` is the number representing the height of
 the iframe.
 
+### Using the image proptype
+
+The `image` propType will launch an image picker in Site Designer when editing the block config.
+
+Site Designer will populate the `image` like this when an image has been selected:
+
+```
+imageConfig: {
+    uriBase: 'https://www.site.com',
+    imagePath: 'path/to/image',
+    altText: 'alt text for the image',
+    width: 800,
+    height: 600
+}
+```
+
+You can use `ElementPropTypes.image.default` in your default props, which will return this:
+
+```
+{
+    uriBase: '',
+    imagePath: '',
+    altText: '',
+    width: 0,
+    height: 0
+}
+```
+
+And it would be used in default props like this:
+```
+defaultProps = {
+    imageConfig: ElementPropTypes.image.default
+}
+```
 
 
 ### Versioning

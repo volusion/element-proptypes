@@ -9,7 +9,21 @@ function getShim() {
     return shim;
 }
 
-['array', 'bool', 'string', 'color', 'number', 'media', 'editorFull', 'editorMinimal', 'readOnly'].forEach(type => {
+[
+    'array',
+    'bool',
+    'string',
+    'color',
+    'number',
+    'image',
+    'media',
+    'product',
+    'category',
+    'sectionHeader',
+    'editorFull',
+    'editorMinimal',
+    'readOnly'
+].forEach(type => {
     PropTypes[type] = getShim();
 });
 
@@ -17,10 +31,24 @@ function getShim() {
     PropTypes[type] = getShim;
 });
 
+const defaults = {
+    image: {
+        uriBase: '',
+        imagePath: '',
+        altText: '',
+        width: 0,
+        height: 0
+    }
+};
+
 const primitiveProp = type => {
     const checker = PropTypes[type];
     checker._meta = { type };
     checker.isRequired._meta = { type, isRequired: true };
+    if (defaults[type]) {
+        checker.default = defaults[type];
+    }
+
     return checker;
 };
 
@@ -80,6 +108,10 @@ const ElementPropTypes = {
     editorMinimal: primitiveProp('editorMinimal'),
     number: primitiveProp('number'),
     string: primitiveProp('string'),
+    product: primitiveProp('product'),
+    category: primitiveProp('category'),
+    sectionHeader: primitiveProp('sectionHeader'),
+    image: primitiveProp('image'),
     arrayOf: createTypeOfTypeChecker('arrayOf'),
     objectOf: createTypeOfTypeChecker('objectOf'),
     embeddable: createShapeTypeChecker('embeddable'),
