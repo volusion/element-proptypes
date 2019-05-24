@@ -102,6 +102,46 @@ describe('Metadata extractor', () => {
         });
     });
 
+    it('Extracts metadata from product type', () => {
+        const props = {
+            productProp: ElementPropTypes.product,
+            productPropRequired: ElementPropTypes.product.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['Product Prop']).toEqual({
+            propName: 'productProp',
+            type: 'product'
+        });
+
+        expect(extracted['Product Prop Required']).toEqual({
+            propName: 'productPropRequired',
+            type: 'product',
+            isRequired: true
+        });
+    });
+
+    it('Extracts metadata from category type', () => {
+        const props = {
+            categoryProp: ElementPropTypes.category,
+            categoryPropRequired: ElementPropTypes.category.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['Category Prop']).toEqual({
+            propName: 'categoryProp',
+            type: 'category'
+        });
+
+        expect(extracted['Category Prop Required']).toEqual({
+            propName: 'categoryPropRequired',
+            type: 'category',
+            isRequired: true
+        });
+    });
+
     it('Extracts metadata from editorFull type', () => {
         const props = {
             editorFullProp: ElementPropTypes.editorFull,
@@ -173,9 +213,8 @@ describe('Metadata extractor', () => {
     it('Extracts metadata from objectOf prop', () => {
         const props = {
             anObject: ElementPropTypes.objectOf(ElementPropTypes.string),
-            anObjectRequired: ElementPropTypes.objectOf(
-                ElementPropTypes.string
-            ).isRequired
+            anObjectRequired: ElementPropTypes.objectOf(ElementPropTypes.string)
+                .isRequired
         };
 
         const extracted = extractMetadata(props);
@@ -268,7 +307,6 @@ describe('Metadata extractor', () => {
     });
 
     it('Extracts metadata from embeddable type', () => {
-
         const props = {
             anIframe: ElementPropTypes.embeddable({
                 embedType: ElementPropTypes.string,
@@ -287,15 +325,91 @@ describe('Metadata extractor', () => {
                     propName: 'embedType',
                     type: 'string'
                 },
-                'Url': {
+                Url: {
                     propName: 'url',
                     type: 'string'
                 },
-                'Height': {
+                Height: {
                     propName: 'height',
                     type: 'number'
                 }
             }
+        });
+    });
+
+    it('Extracts metadata from imageAttributes type', () => {
+        const props = {
+            anImage: ElementPropTypes.imageAttributes({
+                uriBase: ElementPropTypes.string,
+                imagePath: ElementPropTypes.string,
+                altText: ElementPropTypes.string,
+                width: ElementPropTypes.number,
+                height: ElementPropTypes.number
+            }),
+            anImageRequired: ElementPropTypes.imageAttributes({
+                uriBase: ElementPropTypes.string,
+                imagePath: ElementPropTypes.string,
+                altText: ElementPropTypes.string,
+                width: ElementPropTypes.number,
+                height: ElementPropTypes.number
+            }).isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['An Image']).toEqual({
+            propName: 'anImage',
+            type: 'imageAttributes',
+            objMeta: {
+                'Uri Base': {
+                    propName: 'uriBase',
+                    type: 'string'
+                },
+                'Image Path': {
+                    propName: 'imagePath',
+                    type: 'string'
+                },
+                'Alt Text': {
+                    propName: 'altText',
+                    type: 'string'
+                },
+                Width: {
+                    propName: 'width',
+                    type: 'number'
+                },
+                Height: {
+                    propName: 'height',
+                    type: 'number'
+                }
+            }
+        });
+
+        expect(extracted['An Image Required']).toEqual({
+            propName: 'anImageRequired',
+            type: 'imageAttributes',
+            objMeta: {
+                'Uri Base': {
+                    propName: 'uriBase',
+                    type: 'string'
+                },
+                'Image Path': {
+                    propName: 'imagePath',
+                    type: 'string'
+                },
+                'Alt Text': {
+                    propName: 'altText',
+                    type: 'string'
+                },
+                Width: {
+                    propName: 'width',
+                    type: 'number'
+                },
+                Height: {
+                    propName: 'height',
+                    type: 'number'
+                }
+            },
+            isRequired: true
         });
     });
 

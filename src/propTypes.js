@@ -9,11 +9,31 @@ function getShim() {
     return shim;
 }
 
-['array', 'bool', 'string', 'color', 'number', 'media', 'editorFull', 'editorMinimal', 'readOnly'].forEach(type => {
+[
+    'array',
+    'bool',
+    'string',
+    'color',
+    'number',
+    'media',
+    'product',
+    'category',
+    'imageAttributes',
+    'editorFull',
+    'editorMinimal',
+    'readOnly'
+].forEach(type => {
     PropTypes[type] = getShim();
 });
 
-['objectOf', 'arrayOf', 'oneOf', 'shape', 'embeddable'].forEach(type => {
+[
+    'objectOf',
+    'arrayOf',
+    'oneOf',
+    'shape',
+    'embeddable',
+    'imageAttributes'
+].forEach(type => {
     PropTypes[type] = getShim;
 });
 
@@ -80,9 +100,12 @@ const ElementPropTypes = {
     editorMinimal: primitiveProp('editorMinimal'),
     number: primitiveProp('number'),
     string: primitiveProp('string'),
+    product: primitiveProp('product'),
+    category: primitiveProp('category'),
     arrayOf: createTypeOfTypeChecker('arrayOf'),
     objectOf: createTypeOfTypeChecker('objectOf'),
     embeddable: createShapeTypeChecker('embeddable'),
+    imageAttributes: createShapeTypeChecker('imageAttributes'),
     oneOf: createEnumTypeChecker,
     shape: createShapeTypeChecker('shape'),
     readOnly: primitiveProp('readOnly')
