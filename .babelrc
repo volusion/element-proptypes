@@ -9,6 +9,9 @@
         "stage-1",
         "latest"
     ],
+    "plugins": [
+        "external-helpers"
+      ],
     "env": {
         "test": {
             "presets": [
@@ -17,7 +20,10 @@
                 ],
                 "stage-1",
                 "latest"
-            ]
+            ],
+            "plugins": [
+                "external-helpers"
+              ]
         }
     }
 }

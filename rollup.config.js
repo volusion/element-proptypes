@@ -8,7 +8,9 @@ function standardBuilds() {
         plugins: [
             babel({
                 exclude: ['node_modules/**'],
-                plugins: ['external-helpers']
+                plugins: ['external-helpers', 'transform-object-rest-spread'],
+                babelrc: false,
+                presets: [['env', { modules: false }]]
             }),
             commonjs() // so rollup can convert node modules to ESM if needed
         ],
