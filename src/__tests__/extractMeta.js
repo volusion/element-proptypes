@@ -142,6 +142,26 @@ describe('Metadata extractor', () => {
         });
     });
 
+    it('Extracts metadata from sectionHeader type', () => {
+        const props = {
+            sectionHeaderProp: ElementPropTypes.sectionHeader,
+            sectionHeaderPropRequired: ElementPropTypes.sectionHeader.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['Section Header Prop']).toEqual({
+            propName: 'sectionHeaderProp',
+            type: 'sectionHeader'
+        });
+
+        expect(extracted['Section Header Prop Required']).toEqual({
+            propName: 'sectionHeaderPropRequired',
+            type: 'sectionHeader',
+            isRequired: true
+        });
+    });
+
     it('Extracts metadata from editorFull type', () => {
         const props = {
             editorFullProp: ElementPropTypes.editorFull,

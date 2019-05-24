@@ -28,6 +28,7 @@ let props = {
   optionalColor: ElementPropTypes.color,
   optionalProduct: ElementPropTypes.product,
   optionalCategory: ElementPropTypes.category,
+  optionalCategory: ElementPropTypes.sectionHeader,
   optionalImageAttributes: ElementPropTypes.imageAttributes,
   optionalMedia: ElementPropTypes.media,
   optionalEditorFull: ElementPropTypes.editorFull,
@@ -42,6 +43,7 @@ let props = {
   requiredColor: ElementPropTypes.color,
   requiredProduct: ElementPropTypes.product,
   requiredCategory: ElementPropTypes.category,
+  requiredCategory: ElementPropTypes.sectionHeader,
   requiredImageAttributes: ElementPropTypes.imageAttributes,
   requiredMedia: ElementPropTypes.media,
   requiredEditorFull: ElementPropTypes.editorFull,
@@ -111,6 +113,15 @@ const meta = extractMetadata(props);
   'Optional Color': {
       type: 'color'
   },
+  'Optional Product': {
+      type: 'color'
+  },
+  'Optional Category': {
+      type: 'color'
+  },
+  'Optional Section Header': {
+      type: 'sectionHeader'
+  },
   'Optional Media': {
       type: 'media'
   },
@@ -149,6 +160,10 @@ const meta = extractMetadata(props);
   },
   'Required Category': {
       type: 'category',
+      isRequired: true
+  },
+  'Required Section Header': {
+      type: 'sectionHeader',
       isRequired: true
   },
   'Required Media': {
@@ -225,14 +240,7 @@ const meta = extractMetadata(props);
     },
     isRequired: true
   },
-  'Embeddable': {
-    objMeta: {
-     'Embed Type': {
-        type: 'string'
-      },
-    }
-  },
-  'ImageAttributes': {
+  'Optional ImageAttributes': {
     objMeta: {
         'Uri Base': {
             propName: 'uriBase',
@@ -254,6 +262,38 @@ const meta = extractMetadata(props);
             propName: 'height',
             type: 'number'
         }
+    }
+  },
+  'Required ImageAttributes': {
+    objMeta: {
+        'Uri Base': {
+            propName: 'uriBase',
+            type: 'string'
+        },
+        'Image Path': {
+            propName: 'imagePath',
+            type: 'string'
+        },
+        'Alt Text': {
+            propName: 'altText',
+            type: 'string'
+        },
+        Width: {
+            propName: 'width',
+            type: 'number'
+        },
+        Height: {
+            propName: 'height',
+            type: 'number'
+        }
+    },
+    isRequired: true
+  },
+  'Embeddable': {
+    objMeta: {
+     'Embed Type': {
+        type: 'string'
+      },
     }
   },
 
