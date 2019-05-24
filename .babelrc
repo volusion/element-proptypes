@@ -9,9 +9,6 @@
         "stage-1",
         "latest"
     ],
-    "plugins": [
-        "transform-object-rest-spread"
-      ],
     "env": {
         "test": {
             "presets": [
@@ -20,10 +17,7 @@
                 ],
                 "stage-1",
                 "latest"
-            ],
-            "plugins": [
-                "transform-object-rest-spread"
-              ]
+            ]
         }
     }
 }
