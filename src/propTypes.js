@@ -15,11 +15,11 @@ function getShim() {
     'string',
     'color',
     'number',
+    'image',
     'media',
     'product',
     'category',
     'sectionHeader',
-    'image',
     'editorFull',
     'editorMinimal',
     'readOnly'
@@ -27,11 +27,9 @@ function getShim() {
     PropTypes[type] = getShim();
 });
 
-['objectOf', 'arrayOf', 'oneOf', 'shape', 'embeddable', 'image'].forEach(
-    type => {
-        PropTypes[type] = getShim;
-    }
-);
+['objectOf', 'arrayOf', 'oneOf', 'shape', 'embeddable'].forEach(type => {
+    PropTypes[type] = getShim;
+});
 
 const defaults = {
     image: {
@@ -47,6 +45,10 @@ const primitiveProp = type => {
     const checker = PropTypes[type];
     checker._meta = { type };
     checker.isRequired._meta = { type, isRequired: true };
+    if (defaults[type]) {
+        checker.default = defaults[type];
+    }
+
     return checker;
 };
 
@@ -86,10 +88,6 @@ const createShapeTypeChecker = type => shapeObj => {
         };
     });
 
-    if (defaults[type]) {
-        appliedChecker.default = defaults[type];
-    }
-
     appliedChecker._meta = {
         type,
         objMeta
@@ -113,10 +111,10 @@ const ElementPropTypes = {
     product: primitiveProp('product'),
     category: primitiveProp('category'),
     sectionHeader: primitiveProp('sectionHeader'),
+    image: primitiveProp('image'),
     arrayOf: createTypeOfTypeChecker('arrayOf'),
     objectOf: createTypeOfTypeChecker('objectOf'),
     embeddable: createShapeTypeChecker('embeddable'),
-    image: createShapeTypeChecker('image'),
     oneOf: createEnumTypeChecker,
     shape: createShapeTypeChecker('shape'),
     readOnly: primitiveProp('readOnly')

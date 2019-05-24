@@ -310,6 +310,40 @@ npm run build
 
 Run `npm run build` every time you want to compile and transpile your code.
 
+### Using the product proptype
+
+The `product` proptype will launch a product picker when editing a block config in Site Designer, and store the product id when a product from the store is selected. When using the `product` proptype within a block, you will need to add the prop to the block `configSpec`
+```js
+configSpec = {
+    myProduct: ElementPropTypes.product
+}
+```
+
+### Using the category proptype
+
+The `category` proptype will launch a category picker when editing a block config in Site Designer, and store the product id when a category from the store is selected. When using the `category` proptype within a block, you will need to add the prop to the block `configSpec`
+```js
+configSpec = {
+    myCategory: ElementPropTypes.category
+}
+```
+
+### Using the sectionHeader proptype
+
+The `sectionHeader` proptype is not editable in Site Designer - it is included so that it can be used to format the contents of the block config edit form in Site Designer. When using the `sectionHeader` proptype within a block, you will need to add the prop to the block `configSpec`
+```js
+configSpec = {
+    mySectionHeader: ElementPropTypes.sectionHeader
+}
+```
+
+You will also need to add a default value for the `mySectionHeader` property on the `defaultProps` of the object
+```js
+defaultProps = {
+    mySectionHeader = "The header text for this section of the block config editing form"
+}
+```
+
 ### Using editor proptype
 
 When using the `editorFull` and `editorMinimal` proptypes within a block, you will first need to add the prop to the block `configSpec`
@@ -362,35 +396,21 @@ the iframe.
 
 ### Using the image proptype
 
-The `image` propType will launch an image picker in Site Designer when editing the block config. You must specify a block config like this one:
+The `image` propType will launch an image picker in Site Designer when editing the block config.
+
+Site Designer will populate the `image` like this when an image has been selected:
 
 ```
-configSpec = {
-    imageConfig: ElementPropTypes.image({
-        uriBase: ElementPropTypes.string,
-        imagePath: ElementPropTypes.string,
-        altText: ElementPropTypes.string
-        width: ElementPropTypes.number
-        height: ElementPropTypes.number
-    })
-};
-```
-
-And for the default props, use something like this:
-
-```
-defaultProps = {
-    imageConfig: {
-        uriBase: 'https://www.site.com',
-        imagePath: 'path/to/image',
-        altText: 'alt text for the image',
-        width: 800,
-        height: 600
-    }
+imageConfig: {
+    uriBase: 'https://www.site.com',
+    imagePath: 'path/to/image',
+    altText: 'alt text for the image',
+    width: 800,
+    height: 600
 }
 ```
 
-You can also use `ElementPropTypes.image.default` which will return this:
+You can use `ElementPropTypes.image.default` in your default props, which will return this:
 
 ```
 {
@@ -401,6 +421,14 @@ You can also use `ElementPropTypes.image.default` which will return this:
     height: 0
 }
 ```
+
+And it would be used in default props like this:
+```
+defaultProps = {
+    imageConfig: ElementPropTypes.image.default
+}
+```
+
 
 ### Versioning
 

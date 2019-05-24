@@ -359,91 +359,29 @@ describe('Metadata extractor', () => {
 
     it('Extracts metadata from image type', () => {
         const props = {
-            anImage: ElementPropTypes.image({
-                uriBase: ElementPropTypes.string,
-                imagePath: ElementPropTypes.string,
-                altText: ElementPropTypes.string,
-                width: ElementPropTypes.number,
-                height: ElementPropTypes.number
-            }),
-            anImageRequired: ElementPropTypes.image({
-                uriBase: ElementPropTypes.string,
-                imagePath: ElementPropTypes.string,
-                altText: ElementPropTypes.string,
-                width: ElementPropTypes.number,
-                height: ElementPropTypes.number
-            }).isRequired
+            imageProp: ElementPropTypes.image,
+            imagePropRequired: ElementPropTypes.image.isRequired
         };
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['An Image']).toEqual({
-            propName: 'anImage',
-            type: 'image',
-            objMeta: {
-                'Uri Base': {
-                    propName: 'uriBase',
-                    type: 'string'
-                },
-                'Image Path': {
-                    propName: 'imagePath',
-                    type: 'string'
-                },
-                'Alt Text': {
-                    propName: 'altText',
-                    type: 'string'
-                },
-                Width: {
-                    propName: 'width',
-                    type: 'number'
-                },
-                Height: {
-                    propName: 'height',
-                    type: 'number'
-                }
-            }
+        expect(extracted['Image Prop']).toEqual({
+            propName: 'imageProp',
+            type: 'image'
         });
 
-        expect(extracted['An Image Required']).toEqual({
-            propName: 'anImageRequired',
+        expect(extracted['Image Prop Required']).toEqual({
+            propName: 'imagePropRequired',
             type: 'image',
-            objMeta: {
-                'Uri Base': {
-                    propName: 'uriBase',
-                    type: 'string'
-                },
-                'Image Path': {
-                    propName: 'imagePath',
-                    type: 'string'
-                },
-                'Alt Text': {
-                    propName: 'altText',
-                    type: 'string'
-                },
-                Width: {
-                    propName: 'width',
-                    type: 'number'
-                },
-                Height: {
-                    propName: 'height',
-                    type: 'number'
-                }
-            },
             isRequired: true
         });
     });
 
     it('Returns a default config for the image type', () => {
         const props = {
-            anImage: ElementPropTypes.image({
-                uriBase: ElementPropTypes.string,
-                imagePath: ElementPropTypes.string,
-                altText: ElementPropTypes.string,
-                width: ElementPropTypes.number,
-                height: ElementPropTypes.number
-            })
+            imageProp: ElementPropTypes.image
         };
-        expect(props.anImage.default).toEqual({
+        expect(props.imageProp.default).toEqual({
             uriBase: '',
             imagePath: '',
             altText: '',
