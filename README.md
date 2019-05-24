@@ -390,6 +390,18 @@ defaultProps = {
 }
 ```
 
+You can also use `ElementPropTypes.image.default` which will return this:
+
+```
+{
+    uriBase: '',
+    imagePath: '',
+    altText: '',
+    width: 0,
+    height: 0
+}
+```
+
 ### Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/volusion/element-proptypes/tags).
