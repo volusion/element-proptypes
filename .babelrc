@@ -10,7 +10,7 @@
         "latest"
     ],
     "plugins": [
-        "external-helpers"
+        "transform-object-rest-spread"
       ],
     "env": {
         "test": {
@@ -22,7 +22,7 @@
                 "latest"
             ],
             "plugins": [
-                "external-helpers"
+                "transform-object-rest-spread"
               ]
         }
     }

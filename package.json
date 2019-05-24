@@ -16,7 +16,8 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c --watch",
-    "release": "rollup -c && np",
+    "prepare": "npm run build && npm run test",
+    "release": "npm run prepare && np",
     "test": "jest",
     "test:watch": "jest --watch"
   },
