@@ -26,6 +26,9 @@ let props = {
   optionalNumber: ElementPropTypes.number,
   optionalString: ElementPropTypes.string,
   optionalColor: ElementPropTypes.color,
+  optionalProduct: ElementPropTypes.product,
+  optionalCategory: ElementPropTypes.category,
+  optionalImageAttributes: ElementPropTypes.imageAttributes,
   optionalMedia: ElementPropTypes.media,
   optionalEditorFull: ElementPropTypes.editorFull,
   optionalEditorMinimal: ElementPropTypes.editorMinimal,
@@ -37,6 +40,9 @@ let props = {
   requiredNumber: ElementPropTypes.number,
   requiredString: ElementPropTypes.string,
   requiredColor: ElementPropTypes.color,
+  requiredProduct: ElementPropTypes.product,
+  requiredCategory: ElementPropTypes.category,
+  requiredImageAttributes: ElementPropTypes.imageAttributes,
   requiredMedia: ElementPropTypes.media,
   requiredEditorFull: ElementPropTypes.editorFull,
   requiredEditorMinimal: ElementPropTypes.editorMinimal,
@@ -137,6 +143,14 @@ const meta = extractMetadata(props);
       type: 'color',
       isRequired: true
   },
+  'Required Product': {
+      type: 'product',
+      isRequired: true
+  },
+  'Required Category': {
+      type: 'category',
+      isRequired: true
+  },
   'Required Media': {
       type: 'media',
       isRequired: true
@@ -216,6 +230,30 @@ const meta = extractMetadata(props);
      'Embed Type': {
         type: 'string'
       },
+    }
+  },
+  'ImageAttributes': {
+    objMeta: {
+        'Uri Base': {
+            propName: 'uriBase',
+            type: 'string'
+        },
+        'Image Path': {
+            propName: 'imagePath',
+            type: 'string'
+        },
+        'Alt Text': {
+            propName: 'altText',
+            type: 'string'
+        },
+        Width: {
+            propName: 'width',
+            type: 'number'
+        },
+        Height: {
+            propName: 'height',
+            type: 'number'
+        }
     }
   },
 
