@@ -433,6 +433,25 @@ describe('Metadata extractor', () => {
         });
     });
 
+    it('Returns a default config for the image type', () => {
+        const props = {
+            anImage: ElementPropTypes.image({
+                uriBase: ElementPropTypes.string,
+                imagePath: ElementPropTypes.string,
+                altText: ElementPropTypes.string,
+                width: ElementPropTypes.number,
+                height: ElementPropTypes.number
+            })
+        };
+        expect(props.anImage.default).toEqual({
+            uriBase: '',
+            imagePath: '',
+            altText: '',
+            width: 0,
+            height: 0
+        });
+    });
+
     it('Extracts metadata from readOnly type', () => {
         const props = {
             aReadOnly: ElementPropTypes.readOnly

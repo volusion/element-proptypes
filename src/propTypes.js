@@ -33,6 +33,16 @@ function getShim() {
     }
 );
 
+const defaults = {
+    image: {
+        uriBase: '',
+        imagePath: '',
+        altText: '',
+        width: 0,
+        height: 0
+    }
+};
+
 const primitiveProp = type => {
     const checker = PropTypes[type];
     checker._meta = { type };
@@ -75,6 +85,10 @@ const createShapeTypeChecker = type => shapeObj => {
             propName: key
         };
     });
+
+    if (defaults[type]) {
+        appliedChecker.default = defaults[type];
+    }
 
     appliedChecker._meta = {
         type,
