@@ -29,7 +29,7 @@ let props = {
   optionalProduct: ElementPropTypes.product,
   optionalCategory: ElementPropTypes.category,
   optionalCategory: ElementPropTypes.sectionHeader,
-  optionalImageAttributes: ElementPropTypes.imageAttributes,
+  optionalImage: ElementPropTypes.image,
   optionalMedia: ElementPropTypes.media,
   optionalEditorFull: ElementPropTypes.editorFull,
   optionalEditorMinimal: ElementPropTypes.editorMinimal,
@@ -44,7 +44,7 @@ let props = {
   requiredProduct: ElementPropTypes.product,
   requiredCategory: ElementPropTypes.category,
   requiredCategory: ElementPropTypes.sectionHeader,
-  requiredImageAttributes: ElementPropTypes.imageAttributes,
+  requiredImage: ElementPropTypes.image,
   requiredMedia: ElementPropTypes.media,
   requiredEditorFull: ElementPropTypes.editorFull,
   requiredEditorMinimal: ElementPropTypes.editorMinimal,
@@ -240,7 +240,7 @@ const meta = extractMetadata(props);
     },
     isRequired: true
   },
-  'Optional ImageAttributes': {
+  'Optional Image': {
     objMeta: {
         'Uri Base': {
             propName: 'uriBase',
@@ -264,7 +264,7 @@ const meta = extractMetadata(props);
         }
     }
   },
-  'Required ImageAttributes': {
+  'Required Image': {
     objMeta: {
         'Uri Base': {
             propName: 'uriBase',
@@ -360,7 +360,35 @@ defaultProps = {
 `url` is the site you want to load in the embedded iframe, and `height` is the number representing the height of
 the iframe.
 
+### Using the image proptype
 
+The `image` propType will launch an image picker in Site Designer when editing the block config. You must specify a block config like this one:
+
+```
+configSpec = {
+    imageConfig: ElementPropTypes.image({
+        uriBase: ElementPropTypes.string,
+        imagePath: ElementPropTypes.string,
+        altText: ElementPropTypes.string
+        width: ElementPropTypes.number
+        height: ElementPropTypes.number
+    })
+};
+```
+
+And for the default props, use something like this:
+
+```
+defaultProps = {
+    imageConfig: {
+        uriBase: 'https://www.site.com',
+        imagePath: 'path/to/image',
+        altText: 'alt text for the image',
+        width: 800,
+        height: 600
+    }
+}
+```
 
 ### Versioning
 

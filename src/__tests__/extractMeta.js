@@ -357,16 +357,16 @@ describe('Metadata extractor', () => {
         });
     });
 
-    it('Extracts metadata from imageAttributes type', () => {
+    it('Extracts metadata from image type', () => {
         const props = {
-            anImage: ElementPropTypes.imageAttributes({
+            anImage: ElementPropTypes.image({
                 uriBase: ElementPropTypes.string,
                 imagePath: ElementPropTypes.string,
                 altText: ElementPropTypes.string,
                 width: ElementPropTypes.number,
                 height: ElementPropTypes.number
             }),
-            anImageRequired: ElementPropTypes.imageAttributes({
+            anImageRequired: ElementPropTypes.image({
                 uriBase: ElementPropTypes.string,
                 imagePath: ElementPropTypes.string,
                 altText: ElementPropTypes.string,
@@ -379,7 +379,7 @@ describe('Metadata extractor', () => {
 
         expect(extracted['An Image']).toEqual({
             propName: 'anImage',
-            type: 'imageAttributes',
+            type: 'image',
             objMeta: {
                 'Uri Base': {
                     propName: 'uriBase',
@@ -406,7 +406,7 @@ describe('Metadata extractor', () => {
 
         expect(extracted['An Image Required']).toEqual({
             propName: 'anImageRequired',
-            type: 'imageAttributes',
+            type: 'image',
             objMeta: {
                 'Uri Base': {
                     propName: 'uriBase',
