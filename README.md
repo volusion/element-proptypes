@@ -294,19 +294,19 @@ const meta = extractMetadata(props);
   'Optional Slider': {
     objMeta: {
         Min: {
-            propName: 'uriBase',
-            type: 'string'
+            propName: 'min',
+            type: 'number'
         },
         Max: {
-            propName: 'imagePath',
-            type: 'string'
+            propName: 'max',
+            type: 'number'
         },
         'Step Size': {
-            propName: 'altText',
-            type: 'string'
+            propName: 'stepSize',
+            type: 'number'
         },
         'Selected Value': {
-            propName: 'width',
+            propName: 'selectedValue',
             type: 'number'
         }
     }
@@ -314,19 +314,19 @@ const meta = extractMetadata(props);
   'Required Slider': {
     objMeta: {
         Min: {
-            propName: 'uriBase',
-            type: 'string'
+            propName: 'min',
+            type: 'number'
         },
         Max: {
-            propName: 'imagePath',
-            type: 'string'
+            propName: 'max',
+            type: 'number'
         },
         'Step Size': {
-            propName: 'altText',
-            type: 'string'
+            propName: 'stepSize',
+            type: 'number'
         },
         'Selected Value': {
-            propName: 'width',
+            propName: 'selectedValue',
             type: 'number'
         }
     },
