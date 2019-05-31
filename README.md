@@ -30,6 +30,7 @@ let props = {
   optionalCategory: ElementPropTypes.category,
   optionalCategory: ElementPropTypes.sectionHeader,
   optionalImage: ElementPropTypes.image,
+  optionalSlider: ElementPropTypes.slider,
   optionalMedia: ElementPropTypes.media,
   optionalEditorFull: ElementPropTypes.editorFull,
   optionalEditorMinimal: ElementPropTypes.editorMinimal,
@@ -45,6 +46,7 @@ let props = {
   requiredCategory: ElementPropTypes.category,
   requiredCategory: ElementPropTypes.sectionHeader,
   requiredImage: ElementPropTypes.image,
+  requiredSlider: ElementPropTypes.slider,
   requiredMedia: ElementPropTypes.media,
   requiredEditorFull: ElementPropTypes.editorFull,
   requiredEditorMinimal: ElementPropTypes.editorMinimal,
@@ -289,6 +291,47 @@ const meta = extractMetadata(props);
     },
     isRequired: true
   },
+  'Optional Slider': {
+    objMeta: {
+        Min: {
+            propName: 'uriBase',
+            type: 'string'
+        },
+        Max: {
+            propName: 'imagePath',
+            type: 'string'
+        },
+        'Step Size': {
+            propName: 'altText',
+            type: 'string'
+        },
+        'Selected Value': {
+            propName: 'width',
+            type: 'number'
+        }
+    }
+  },
+  'Required Slider': {
+    objMeta: {
+        Min: {
+            propName: 'uriBase',
+            type: 'string'
+        },
+        Max: {
+            propName: 'imagePath',
+            type: 'string'
+        },
+        'Step Size': {
+            propName: 'altText',
+            type: 'string'
+        },
+        'Selected Value': {
+            propName: 'width',
+            type: 'number'
+        }
+    },
+    isRequired: true
+  },
   'Embeddable': {
     objMeta: {
      'Embed Type': {
@@ -426,6 +469,39 @@ And it would be used in default props like this:
 ```
 defaultProps = {
     imageConfig: ElementPropTypes.image.default
+}
+```
+
+### Using the slider proptype
+
+The `slider` propType will display an horizontal slider for picking a numeric value in Site Designer when editing the block config.
+
+Site Designer will populate the `slider` like this when a value has been selected:
+
+```
+sliderConfig: {
+    min: 50,
+    max: 100,
+    stepSize: 5,
+    selectedValue: 75
+}
+```
+
+You can use `ElementPropTypes.slider.default` in your default props, which will return this:
+
+```
+{
+    min: 0,
+    max: 10,
+    stepSize: 1,
+    selectedValue: 0
+}
+```
+
+And it would be used in default props like this:
+```
+defaultProps = {
+    sliderConfig: ElementPropTypes.slider.default
 }
 ```
 
