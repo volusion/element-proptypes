@@ -390,6 +390,38 @@ describe('Metadata extractor', () => {
         });
     });
 
+    it('Extracts metadata from slider type', () => {
+        const props = {
+            sliderProp: ElementPropTypes.slider,
+            sliderPropRequired: ElementPropTypes.slider.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['Slider Prop']).toEqual({
+            propName: 'sliderProp',
+            type: 'slider'
+        });
+
+        expect(extracted['Slider Prop Required']).toEqual({
+            propName: 'sliderPropRequired',
+            type: 'slider',
+            isRequired: true
+        });
+    });
+
+    it('Returns a default config for the slider type', () => {
+        const props = {
+            sliderProp: ElementPropTypes.slider
+        };
+        expect(props.sliderProp.default).toEqual({
+            min: 0,
+            max: 10,
+            stepSize: 1,
+            selectedValue: 0
+        });
+    });
+
     it('Extracts metadata from readOnly type', () => {
         const props = {
             aReadOnly: ElementPropTypes.readOnly

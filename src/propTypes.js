@@ -16,6 +16,7 @@ function getShim() {
     'color',
     'number',
     'image',
+    'slider',
     'media',
     'product',
     'category',
@@ -38,6 +39,12 @@ const defaults = {
         altText: '',
         width: 0,
         height: 0
+    },
+    slider: {
+        min: 0,
+        max: 10,
+        stepSize: 1,
+        selectedValue: 0
     }
 };
 
@@ -112,6 +119,7 @@ const ElementPropTypes = {
     category: primitiveProp('category'),
     sectionHeader: primitiveProp('sectionHeader'),
     image: primitiveProp('image'),
+    slider: primitiveProp('slider'),
     arrayOf: createTypeOfTypeChecker('arrayOf'),
     objectOf: createTypeOfTypeChecker('objectOf'),
     embeddable: createShapeTypeChecker('embeddable'),
