@@ -434,4 +434,109 @@ describe('Metadata extractor', () => {
             type: 'readOnly'
         });
     });
+
+    it('Extracts metadata using provided ui label', () => {
+        const props = {
+            devName: {
+                type: ElementPropTypes.string,
+                uiLabel: 'Ui label'
+            },
+            devNameTwo: {
+                type: ElementPropTypes.string,
+                uiLabel: 'Ui label two'
+            }
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted).toEqual({
+            'Ui label': {
+                propName: 'devName',
+                type: 'string'
+            },
+            'Ui label two': {
+                propName: 'devNameTwo',
+                type: 'string'
+            }
+        });
+    });
+
+    it('Extracts metadata using provided ui label - mixed with non label', () => {
+        const props = {
+            devName: {
+                type: ElementPropTypes.string,
+                uiLabel: 'Ui label'
+            },
+            devNameTwo: {
+                type: ElementPropTypes.string,
+                uiLabel: 'Ui label two'
+            },
+            devNameThree: ElementPropTypes.number,
+            anIframe: {
+                type: ElementPropTypes.embeddable({
+                    embedType: {
+                        type: ElementPropTypes.string,
+                        uiLabel: 'My embed label'
+                    },
+                    url: ElementPropTypes.string,
+                    height: ElementPropTypes.number
+                }),
+                uiLabel: 'External Iframe'
+            },
+            colors: {
+                type: ElementPropTypes.shape({
+                    background: {
+                        type: ElementPropTypes.color,
+                        uiLabel: 'My background color'
+                    }
+                }),
+                uiLabel: 'My colors'
+            }
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted).toEqual({
+            'Ui label': {
+                propName: 'devName',
+                type: 'string'
+            },
+            'Ui label two': {
+                propName: 'devNameTwo',
+                type: 'string'
+            },
+            'Dev Name Three': {
+                propName: 'devNameThree',
+                type: 'number'
+            },
+            'External Iframe': {
+                propName: 'anIframe',
+                type: 'embeddable',
+                objMeta: {
+                    'My embed label': {
+                        propName: 'embedType',
+                        type: 'string'
+                    },
+                    Url: {
+                        propName: 'url',
+                        type: 'string'
+                    },
+                    Height: {
+                        propName: 'height',
+                        type: 'number'
+                    }
+                }
+            },
+            'My colors': {
+                propName: 'colors',
+                type: 'shape',
+                objMeta: {
+                    'My background color': {
+                        propName: 'background',
+                        type: 'color'
+                    }
+                }
+            }
+        });
+    });
 });
