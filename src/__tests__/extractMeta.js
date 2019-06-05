@@ -439,11 +439,11 @@ describe('Metadata extractor', () => {
         const props = {
             devName: {
                 type: ElementPropTypes.string,
-                uiLabel: 'Ui label'
+                label: 'Ui label'
             },
             devNameTwo: {
                 type: ElementPropTypes.string,
-                uiLabel: 'Ui label two'
+                label: 'Ui label two'
             }
         };
 
@@ -465,32 +465,44 @@ describe('Metadata extractor', () => {
         const props = {
             devName: {
                 type: ElementPropTypes.string,
-                uiLabel: 'Ui label'
+                label: 'Ui label'
             },
             devNameTwo: {
                 type: ElementPropTypes.string,
-                uiLabel: 'Ui label two'
+                label: 'Ui label two'
             },
             devNameThree: ElementPropTypes.number,
             anIframe: {
                 type: ElementPropTypes.embeddable({
                     embedType: {
                         type: ElementPropTypes.string,
-                        uiLabel: 'My embed label'
+                        label: 'My embed label'
                     },
                     url: ElementPropTypes.string,
                     height: ElementPropTypes.number
                 }),
-                uiLabel: 'External Iframe'
+                label: 'External Iframe'
             },
             colors: {
                 type: ElementPropTypes.shape({
                     background: {
                         type: ElementPropTypes.color,
-                        uiLabel: 'My background color'
+                        label: 'My background color'
                     }
                 }),
-                uiLabel: 'My colors'
+                label: 'My colors'
+            },
+            anArray: {
+                type: ElementPropTypes.arrayOf(
+                    ElementPropTypes.shape({
+                        color: {
+                            type: ElementPropTypes.color,
+                            label: 'My Color'
+                        },
+                        oldProp: ElementPropTypes.string
+                    })
+                ),
+                label: 'Array of shape'
             }
         };
 
@@ -534,6 +546,23 @@ describe('Metadata extractor', () => {
                     'My background color': {
                         propName: 'background',
                         type: 'color'
+                    }
+                }
+            },
+            'Array of shape': {
+                propName: 'anArray',
+                type: 'arrayOf',
+                argType: {
+                    type: 'shape',
+                    objMeta: {
+                        'My Color': {
+                            propName: 'color',
+                            type: 'color'
+                        },
+                        'Old Prop': {
+                            propName: 'oldProp',
+                            type: 'string'
+                        }
                     }
                 }
             }
