@@ -10,7 +10,9 @@ const extractMetadata = props => {
         const propType = props[key].type ? props[key].type : props[key];
         extraction[label] = {
             ...propType._meta,
-            propName: key
+            propName: key,
+            isAdvanced: props[key].isAdvanced,
+            tooltip: props[key].tooltip
         };
     });
     return extraction;

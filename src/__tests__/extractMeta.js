@@ -568,4 +568,33 @@ describe('Metadata extractor', () => {
             }
         });
     });
+    it('Extracts aditional properties if provided', () => {
+        const props = {
+            devName: {
+                type: ElementPropTypes.string,
+                label: 'Ui label',
+                isAdvanced: true,
+                tooltip: 'A tooltip'
+            },
+            devNameTwo: {
+                type: ElementPropTypes.string,
+                label: 'Ui label two'
+            }
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted).toEqual({
+            'Ui label': {
+                propName: 'devName',
+                type: 'string',
+                isAdvanced: true,
+                tooltip: 'A tooltip'
+            },
+            'Ui label two': {
+                propName: 'devNameTwo',
+                type: 'string'
+            }
+        });
+    });
 });
