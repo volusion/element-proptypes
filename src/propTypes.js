@@ -1,4 +1,5 @@
 import { fromCamelToSentence } from './utils';
+import extractMetadata from './extractMeta';
 
 const PropTypes = {};
 
@@ -87,13 +88,7 @@ const createEnumTypeChecker = expectedValues => {
 
 const createShapeTypeChecker = type => shapeObj => {
     const appliedChecker = PropTypes.shape(shapeObj);
-    const objMeta = {};
-    Object.keys(shapeObj).forEach(key => {
-        objMeta[fromCamelToSentence(key)] = {
-            ...shapeObj[key]._meta,
-            propName: key
-        };
-    });
+    const objMeta = extractMetadata(shapeObj);
 
     appliedChecker._meta = {
         type,
