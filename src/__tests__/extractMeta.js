@@ -573,7 +573,7 @@ describe('Metadata extractor', () => {
             devName: {
                 type: ElementPropTypes.string,
                 label: 'Ui label',
-                isAdvanced: true,
+                isPrivate: true,
                 tooltip: 'A tooltip'
             },
             devNameTwo: {
@@ -588,7 +588,7 @@ describe('Metadata extractor', () => {
             'Ui label': {
                 propName: 'devName',
                 type: 'string',
-                isAdvanced: true,
+                isPrivate: true,
                 tooltip: 'A tooltip'
             },
             'Ui label two': {
