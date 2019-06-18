@@ -57,6 +57,9 @@ let props = {
 
   // Or a required one
   requiredEnum: ElementPropTypes.oneOf(['News', 'Photos']).isRequired,
+  
+  // Or a private one
+  requiredEnum: ElementPropTypes.oneOf(['News', 'Photos']).isPrivate,
 
   // An array of a certain type
   optionalArrayOf: ElementPropTypes.arrayOf(PropTypes.number),
@@ -546,6 +549,17 @@ The `labelPrefix` and `labelSuffix` props can be used to specify a string value 
 The `labelStepSize` prop allows you to control label step size independently of slider step size. If `labelStepSize` is not set, the `stepSize` value will be used.
 
 The `vertical` prop allows you to orient the slider in a vertical direction rather than the default of horizontal.
+
+### Modifying with .isPrivate
+
+The `.isPrivate` modifier can be applied similarly to `.isRequired` and has the effect of hiding the prop in Site Designer, except to agencies/organizations.
+
+For example:
+```js
+configSpec = {
+    myPrivateString: ElementPropTypes.string.isPrivate
+}
+```
 
 
 ### Versioning
