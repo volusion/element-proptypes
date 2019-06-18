@@ -632,7 +632,7 @@ describe('Metadata extractor', () => {
     it('Extracts isPrivate metadata from string prop', () => {
         const props = {
             textProp: ElementPropTypes.string,
-            textPropRequired: ElementPropTypes.string.isPrivate
+            textPropPrivate: ElementPropTypes.string.isPrivate
         };
 
         const extracted = extractMetadata(props);
@@ -642,8 +642,8 @@ describe('Metadata extractor', () => {
             type: 'string'
         });
 
-        expect(extracted['Text Prop Required']).toEqual({
-            propName: 'textPropRequired',
+        expect(extracted['Text Prop Private']).toEqual({
+            propName: 'textPropPrivate',
             type: 'string',
             isPrivate: true
         });
