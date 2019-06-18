@@ -293,6 +293,18 @@ const meta = extractMetadata(props);
   },
   'Optional Slider': {
     objMeta: {
+        'Label Prefix': {
+            propName: 'labelPrefix',
+            type: 'string'
+        },
+        'Label Step Size': {
+            propName: 'labelStepSize',
+            type: 'number'
+        },
+        'Label Suffix': {
+            propName: 'labelSuffix',
+            type: 'string'
+        },
         Min: {
             propName: 'min',
             type: 'number'
@@ -308,11 +320,27 @@ const meta = extractMetadata(props);
         'Selected Value': {
             propName: 'selectedValue',
             type: 'number'
+        },
+        'Vertical': {
+            propName: 'vertical',
+            type: 'bool'
         }
     }
   },
   'Required Slider': {
     objMeta: {
+        'Label Prefix': {
+            propName: 'labelPrefix',
+            type: 'string'
+        },
+        'Label Step Size': {
+            propName: 'labelStepSize',
+            type: 'number'
+        },
+        'Label Suffix': {
+            propName: 'labelSuffix',
+            type: 'string'
+        },
         Min: {
             propName: 'min',
             type: 'number'
@@ -328,6 +356,10 @@ const meta = extractMetadata(props);
         'Selected Value': {
             propName: 'selectedValue',
             type: 'number'
+        },
+        'Vertical': {
+            propName: 'vertical',
+            type: 'bool'
         }
     },
     isRequired: true
@@ -476,14 +508,18 @@ defaultProps = {
 
 The `slider` propType will display an horizontal slider for picking a numeric value in Site Designer when editing the block config.
 
-Site Designer will populate the `slider` like this when a value has been selected:
+Site Designer will populate the `slider` like this when a value has been selected. Note the `selectedValue` field:
 
 ```
 sliderConfig: {
+    labelPrefix: "~",
+    labelStepSize: 10,
+    labelSuffix: " oz",
     min: 50,
     max: 100,
     stepSize: 5,
-    selectedValue: 75
+    selectedValue: 75,
+    vertical: false
 }
 ```
 
@@ -504,6 +540,12 @@ defaultProps = {
     sliderConfig: ElementPropTypes.slider.default
 }
 ```
+
+The `labelPrefix` and `labelSuffix` props can be used to specify a string value that should appear before and/or after the number in your labels.
+
+The `labelStepSize` prop allows you to control label step size independently of slider step size. If `labelStepSize` is not set, the `stepSize` value will be used.
+
+The `vertical` prop allows you to orient the slider in a vertical direction rather than the default of horizontal.
 
 
 ### Versioning
