@@ -568,6 +568,39 @@ describe('Metadata extractor', () => {
             }
         });
     });
+
+    it('Extracts metadata and label safely if a config prop is undefined or falsey', () => {
+        const props = {
+            colors: {
+                type: ElementPropTypes.shape({
+                    background: {
+                        type: ElementPropTypes.color,
+                        label: 'My background color'
+                    }
+                }),
+                label: 'My colors'
+            },
+            badProp: undefined,
+            nullProp: null,
+            falseProp: false
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted).toEqual({
+            'My colors': {
+                propName: 'colors',
+                type: 'shape',
+                objMeta: {
+                    'My background color': {
+                        propName: 'background',
+                        type: 'color'
+                    }
+                }
+            }
+        });
+    });
+
     it('Extracts aditional properties if provided', () => {
         const props = {
             devName: {
