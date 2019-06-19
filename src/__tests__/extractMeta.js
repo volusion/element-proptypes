@@ -601,11 +601,12 @@ describe('Metadata extractor', () => {
         });
     });
 
-    it('Extracts aditional properties if provided', () => {
+    it('Extracts additional properties if provided', () => {
         const props = {
             devName: {
                 type: ElementPropTypes.string,
                 label: 'Ui label',
+                isPrivate: true,
                 tooltip: 'A tooltip'
             },
             devNameTwo: {
@@ -620,32 +621,13 @@ describe('Metadata extractor', () => {
             'Ui label': {
                 propName: 'devName',
                 type: 'string',
+                isPrivate: true,
                 tooltip: 'A tooltip'
             },
             'Ui label two': {
                 propName: 'devNameTwo',
                 type: 'string'
             }
-        });
-    });
-
-    it('Extracts isPrivate metadata from string prop', () => {
-        const props = {
-            textProp: ElementPropTypes.string,
-            textPropPrivate: ElementPropTypes.string.isPrivate
-        };
-
-        const extracted = extractMetadata(props);
-
-        expect(extracted['Text Prop']).toEqual({
-            propName: 'textProp',
-            type: 'string'
-        });
-
-        expect(extracted['Text Prop Private']).toEqual({
-            propName: 'textPropPrivate',
-            type: 'string',
-            isPrivate: true
         });
     });
 });

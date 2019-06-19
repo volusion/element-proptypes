@@ -6,9 +6,7 @@ const PropTypes = {};
 function getShim() {
     function shim() {}
     function requiredShim() {}
-    function privateShim() {}
     shim.isRequired = requiredShim;
-    shim.isPrivate = privateShim;
     return shim;
 }
 
@@ -55,7 +53,6 @@ const primitiveProp = type => {
     const checker = PropTypes[type];
     checker._meta = { type };
     checker.isRequired._meta = { type, isRequired: true };
-    checker.isPrivate._meta = { type, isPrivate: true };
     if (defaults[type]) {
         checker.default = defaults[type];
     }
@@ -73,10 +70,6 @@ const createTypeOfTypeChecker = type => arrType => {
         ...appliedChecker._meta,
         isRequired: true
     };
-    appliedChecker.isPrivate._meta = {
-        ...appliedChecker._meta,
-        isPrivate: true
-    };
     return appliedChecker;
 };
 
@@ -89,10 +82,6 @@ const createEnumTypeChecker = expectedValues => {
     appliedChecker.isRequired._meta = {
         ...appliedChecker._meta,
         isRequired: true
-    };
-    appliedChecker.isPrivate._meta = {
-        ...appliedChecker._meta,
-        isPrivate: true
     };
     return appliedChecker;
 };
@@ -108,10 +97,6 @@ const createShapeTypeChecker = type => shapeObj => {
     appliedChecker.isRequired._meta = {
         ...appliedChecker._meta,
         isRequired: true
-    };
-    appliedChecker.isPrivate._meta = {
-        ...appliedChecker._meta,
-        isPrivate: true
     };
     return appliedChecker;
 };

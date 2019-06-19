@@ -14,6 +14,7 @@ const extractMetadata = props => {
         extraction[label] = {
             ...propType._meta,
             propName: key,
+            isPrivate: props[key].isPrivate,
             tooltip: props[key].tooltip
         };
     });
