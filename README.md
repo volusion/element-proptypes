@@ -116,10 +116,10 @@ const meta = extractMetadata(props);
       type: 'color'
   },
   'Optional Product': {
-      type: 'color'
+      type: 'product'
   },
   'Optional Category': {
-      type: 'color'
+      type: 'category'
   },
   'Optional Section Header': {
       type: 'sectionHeader'
