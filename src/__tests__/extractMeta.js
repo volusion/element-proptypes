@@ -463,6 +463,43 @@ describe('Metadata extractor', () => {
         });
     });
 
+    it('Extracts metadata using provided ui label and keeps the label even if it is falsey', () => {
+        const props = {
+            devName: {
+                type: ElementPropTypes.string,
+                label: ''
+            },
+            devNameTwo: {
+                type: ElementPropTypes.string,
+                label: false
+            },
+            devNameThree: {
+                type: ElementPropTypes.string,
+                label: null
+            }
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted).toEqual({
+            'Dev Name': {
+                label: '',
+                propName: 'devName',
+                type: 'string'
+            },
+            'Dev Name Two': {
+                label: false,
+                propName: 'devNameTwo',
+                type: 'string'
+            },
+            'Dev Name Three': {
+                label: null,
+                propName: 'devNameThree',
+                type: 'string'
+            }
+        });
+    });
+
     it('Extracts metadata using provided ui label - mixed with non label', () => {
         const props = {
             devName: {
