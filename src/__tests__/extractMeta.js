@@ -451,10 +451,12 @@ describe('Metadata extractor', () => {
 
         expect(extracted).toEqual({
             'Ui label': {
+                label: 'Ui label',
                 propName: 'devName',
                 type: 'string'
             },
             'Ui label two': {
+                label: 'Ui label two',
                 propName: 'devNameTwo',
                 type: 'string'
             }
@@ -510,10 +512,12 @@ describe('Metadata extractor', () => {
 
         expect(extracted).toEqual({
             'Ui label': {
+                label: 'Ui label',
                 propName: 'devName',
                 type: 'string'
             },
             'Ui label two': {
+                label: 'Ui label two',
                 propName: 'devNameTwo',
                 type: 'string'
             },
@@ -522,10 +526,12 @@ describe('Metadata extractor', () => {
                 type: 'number'
             },
             'External Iframe': {
+                label: 'External Iframe',
                 propName: 'anIframe',
                 type: 'embeddable',
                 objMeta: {
                     'My embed label': {
+                        label: 'My embed label',
                         propName: 'embedType',
                         type: 'string'
                     },
@@ -540,22 +546,26 @@ describe('Metadata extractor', () => {
                 }
             },
             'My colors': {
+                label: 'My colors',
                 propName: 'colors',
                 type: 'shape',
                 objMeta: {
                     'My background color': {
+                        label: 'My background color',
                         propName: 'background',
                         type: 'color'
                     }
                 }
             },
             'Array of shape': {
+                label: 'Array of shape',
                 propName: 'anArray',
                 type: 'arrayOf',
                 argType: {
                     type: 'shape',
                     objMeta: {
                         'My Color': {
+                            label: 'My Color',
                             propName: 'color',
                             type: 'color'
                         },
@@ -589,10 +599,12 @@ describe('Metadata extractor', () => {
 
         expect(extracted).toEqual({
             'My colors': {
+                label: 'My colors',
                 propName: 'colors',
                 type: 'shape',
                 objMeta: {
                     'My background color': {
+                        label: 'My background color',
                         propName: 'background',
                         type: 'color'
                     }
@@ -619,12 +631,14 @@ describe('Metadata extractor', () => {
 
         expect(extracted).toEqual({
             'Ui label': {
+                label: 'Ui label',
                 propName: 'devName',
                 type: 'string',
                 isPrivate: true,
                 tooltip: 'A tooltip'
             },
             'Ui label two': {
+                label: 'Ui label two',
                 propName: 'devNameTwo',
                 type: 'string'
             }
