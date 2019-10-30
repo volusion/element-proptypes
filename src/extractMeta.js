@@ -13,6 +13,7 @@ const extractMetadata = props => {
         const propType = props[key].type ? props[key].type : props[key];
         extraction[label] = {
             ...propType._meta,
+            label: uiLabel,
             propName: key,
             isPrivate: props[key].isPrivate,
             tooltip: props[key].tooltip
