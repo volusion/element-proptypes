@@ -1,5 +1,4 @@
 /* eslint-disable security/detect-object-injection */
-import { fromCamelToSentence } from './utils';
 
 const extractMetadata = props => {
     const extraction = {};
@@ -7,13 +6,10 @@ const extractMetadata = props => {
         if (!props[key]) {
             return;
         }
-        const name = fromCamelToSentence(key);
-        const uiLabel = props[key].label;
-        const label = uiLabel ? uiLabel : name;
         const propType = props[key].type ? props[key].type : props[key];
-        extraction[label] = {
+        extraction[key] = {
             ...propType._meta,
-            label: uiLabel,
+            label: props[key].label,
             propName: key,
             isPrivate: props[key].isPrivate,
             tooltip: props[key].tooltip

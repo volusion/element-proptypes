@@ -1,4 +1,4 @@
-import { fromCamelToSentence } from './utils';
+/* eslint-disable security/detect-object-injection */
 import extractMetadata from './extractMeta';
 
 const PropTypes = {};
