@@ -709,4 +709,83 @@ describe('Metadata extractor', () => {
             }
         });
     });
+    it('Extracts metadata safely if nested keys are not unique', () => {
+        const props = {
+            arrayOne: {
+                label: 'Array label',
+                type: ElementPropTypes.arrayOf(
+                    ElementPropTypes.shape({
+                        keyOne: {
+                            label: 'Ui label one',
+                            type: ElementPropTypes.string
+                        },
+                        keyTwo: {
+                            label: 'Ui label two',
+                            type: ElementPropTypes.string
+                        }
+                    })
+                )
+            },
+            arrayTwo: {
+                label: 'Array label',
+                type: ElementPropTypes.arrayOf(
+                    ElementPropTypes.shape({
+                        keyOne: {
+                            label: 'Ui label one',
+                            type: ElementPropTypes.string
+                        },
+                        keyTwo: {
+                            label: 'Ui label two',
+                            type: ElementPropTypes.string
+                        }
+                    })
+                )
+            }
+        };
+       
+        const extracted = extractMetadata(props);
+
+        expect(extracted).toEqual({
+            arrayOne: {
+                argType: {
+                    objMeta: {
+                        keyOne: {
+                            label: 'Ui label one',
+                            propName: 'keyOne',
+                            type: 'string'
+                        },
+                        keyTwo: {
+                            label: 'Ui label two',
+                            propName: 'keyTwo',
+                            type: 'string'
+                        }
+                    },
+                    type: 'shape'
+                },
+                label: 'Array label',
+                propName: 'arrayOne',
+                type: 'arrayOf'
+            },
+            arrayTwo: {
+                argType: {
+                    objMeta: {
+                        keyOne: {
+                            label: 'Ui label one',
+                            propName: 'keyOne',
+                            type: 'string'
+                        },
+                        keyTwo: {
+                            label: 'Ui label two',
+                            propName: 'keyTwo',
+                            type: 'string'
+                        }
+                    },
+                    type: 'shape'
+                },
+                label: 'Array label',
+                propName: 'arrayTwo',
+                type: 'arrayOf'
+            }
+        });
+    });
 });
