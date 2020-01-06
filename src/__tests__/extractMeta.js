@@ -10,12 +10,12 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Text Prop']).toEqual({
+        expect(extracted['textProp']).toEqual({
             propName: 'textProp',
             type: 'string'
         });
 
-        expect(extracted['Text Prop Required']).toEqual({
+        expect(extracted['textPropRequired']).toEqual({
             propName: 'textPropRequired',
             type: 'string',
             isRequired: true
@@ -30,12 +30,12 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Color Prop']).toEqual({
+        expect(extracted['colorProp']).toEqual({
             propName: 'colorProp',
             type: 'color'
         });
 
-        expect(extracted['Color Prop Required']).toEqual({
+        expect(extracted['colorPropRequired']).toEqual({
             propName: 'colorPropRequired',
             type: 'color',
             isRequired: true
@@ -50,12 +50,12 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Number Prop']).toEqual({
+        expect(extracted['numberProp']).toEqual({
             propName: 'numberProp',
             type: 'number'
         });
 
-        expect(extracted['Number Prop Required']).toEqual({
+        expect(extracted['numberPropRequired']).toEqual({
             propName: 'numberPropRequired',
             type: 'number',
             isRequired: true
@@ -70,12 +70,12 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Bool Prop']).toEqual({
+        expect(extracted['boolProp']).toEqual({
             propName: 'boolProp',
             type: 'bool'
         });
 
-        expect(extracted['Bool Prop Required']).toEqual({
+        expect(extracted['boolPropRequired']).toEqual({
             propName: 'boolPropRequired',
             type: 'bool',
             isRequired: true
@@ -90,12 +90,12 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Media Prop']).toEqual({
+        expect(extracted['mediaProp']).toEqual({
             propName: 'mediaProp',
             type: 'media'
         });
 
-        expect(extracted['Media Prop Required']).toEqual({
+        expect(extracted['mediaPropRequired']).toEqual({
             propName: 'mediaPropRequired',
             type: 'media',
             isRequired: true
@@ -110,12 +110,12 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Product Prop']).toEqual({
+        expect(extracted['productProp']).toEqual({
             propName: 'productProp',
             type: 'product'
         });
 
-        expect(extracted['Product Prop Required']).toEqual({
+        expect(extracted['productPropRequired']).toEqual({
             propName: 'productPropRequired',
             type: 'product',
             isRequired: true
@@ -130,12 +130,12 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Category Prop']).toEqual({
+        expect(extracted['categoryProp']).toEqual({
             propName: 'categoryProp',
             type: 'category'
         });
 
-        expect(extracted['Category Prop Required']).toEqual({
+        expect(extracted['categoryPropRequired']).toEqual({
             propName: 'categoryPropRequired',
             type: 'category',
             isRequired: true
@@ -150,12 +150,12 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Section Header Prop']).toEqual({
+        expect(extracted['sectionHeaderProp']).toEqual({
             propName: 'sectionHeaderProp',
             type: 'sectionHeader'
         });
 
-        expect(extracted['Section Header Prop Required']).toEqual({
+        expect(extracted['sectionHeaderPropRequired']).toEqual({
             propName: 'sectionHeaderPropRequired',
             type: 'sectionHeader',
             isRequired: true
@@ -170,12 +170,12 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Editor Full Prop']).toEqual({
+        expect(extracted['editorFullProp']).toEqual({
             propName: 'editorFullProp',
             type: 'editorFull'
         });
 
-        expect(extracted['Editor Full Prop Required']).toEqual({
+        expect(extracted['editorFullPropRequired']).toEqual({
             propName: 'editorFullPropRequired',
             type: 'editorFull',
             isRequired: true
@@ -190,12 +190,12 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Editor Minimal Prop']).toEqual({
+        expect(extracted['editorMinimalProp']).toEqual({
             propName: 'editorMinimalProp',
             type: 'editorMinimal'
         });
 
-        expect(extracted['Editor Minimal Prop Required']).toEqual({
+        expect(extracted['editorMinimalPropRequired']).toEqual({
             propName: 'editorMinimalPropRequired',
             type: 'editorMinimal',
             isRequired: true
@@ -212,7 +212,7 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Some Numbers']).toEqual({
+        expect(extracted['someNumbers']).toEqual({
             propName: 'someNumbers',
             type: 'arrayOf',
             argType: {
@@ -220,7 +220,7 @@ describe('Metadata extractor', () => {
             }
         });
 
-        expect(extracted['Some Numbers Required']).toEqual({
+        expect(extracted['someNumbersRequired']).toEqual({
             propName: 'someNumbersRequired',
             type: 'arrayOf',
             argType: {
@@ -239,7 +239,7 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['An Object']).toEqual({
+        expect(extracted['anObject']).toEqual({
             propName: 'anObject',
             type: 'objectOf',
             argType: {
@@ -247,7 +247,7 @@ describe('Metadata extractor', () => {
             }
         });
 
-        expect(extracted['An Object Required']).toEqual({
+        expect(extracted['anObjectRequired']).toEqual({
             propName: 'anObjectRequired',
             type: 'objectOf',
             argType: {
@@ -266,13 +266,13 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Some Options']).toEqual({
+        expect(extracted['someOptions']).toEqual({
             propName: 'someOptions',
             type: 'oneOf',
             values: ['bottom', 'top']
         });
 
-        expect(extracted['Some Options Required']).toEqual({
+        expect(extracted['someOptionsRequired']).toEqual({
             propName: 'someOptionsRequired',
             type: 'oneOf',
             values: ['bottom', 'top'],
@@ -294,30 +294,30 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['A Shape']).toEqual({
+        expect(extracted['aShape']).toEqual({
             propName: 'aShape',
             type: 'shape',
             objMeta: {
-                'A Tricky Prop': {
+                aTrickyProp: {
                     propName: 'aTrickyProp',
                     type: 'string'
                 },
-                'Not A Tricky Prop': {
+                notATrickyProp: {
                     propName: 'notATrickyProp',
                     type: 'number'
                 }
             }
         });
 
-        expect(extracted['A Shape Required']).toEqual({
+        expect(extracted['aShapeRequired']).toEqual({
             propName: 'aShapeRequired',
             type: 'shape',
             objMeta: {
-                'A Tricky Prop': {
+                aTrickyProp: {
                     propName: 'aTrickyProp',
                     type: 'string'
                 },
-                'Not A Tricky Prop': {
+                notATrickyProp: {
                     propName: 'notATrickyProp',
                     type: 'number'
                 }
@@ -337,19 +337,19 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['An Iframe']).toEqual({
+        expect(extracted['anIframe']).toEqual({
             propName: 'anIframe',
             type: 'embeddable',
             objMeta: {
-                'Embed Type': {
+                embedType: {
                     propName: 'embedType',
                     type: 'string'
                 },
-                Url: {
+                url: {
                     propName: 'url',
                     type: 'string'
                 },
-                Height: {
+                height: {
                     propName: 'height',
                     type: 'number'
                 }
@@ -365,12 +365,12 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Image Prop']).toEqual({
+        expect(extracted['imageProp']).toEqual({
             propName: 'imageProp',
             type: 'image'
         });
 
-        expect(extracted['Image Prop Required']).toEqual({
+        expect(extracted['imagePropRequired']).toEqual({
             propName: 'imagePropRequired',
             type: 'image',
             isRequired: true
@@ -398,12 +398,12 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['Slider Prop']).toEqual({
+        expect(extracted['sliderProp']).toEqual({
             propName: 'sliderProp',
             type: 'slider'
         });
 
-        expect(extracted['Slider Prop Required']).toEqual({
+        expect(extracted['sliderPropRequired']).toEqual({
             propName: 'sliderPropRequired',
             type: 'slider',
             isRequired: true
@@ -429,7 +429,7 @@ describe('Metadata extractor', () => {
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['A Read Only']).toEqual({
+        expect(extracted['aReadOnly']).toEqual({
             propName: 'aReadOnly',
             type: 'readOnly'
         });
@@ -450,12 +450,12 @@ describe('Metadata extractor', () => {
         const extracted = extractMetadata(props);
 
         expect(extracted).toEqual({
-            'Ui label': {
+            devName: {
                 label: 'Ui label',
                 propName: 'devName',
                 type: 'string'
             },
-            'Ui label two': {
+            devNameTwo: {
                 label: 'Ui label two',
                 propName: 'devNameTwo',
                 type: 'string'
@@ -482,17 +482,17 @@ describe('Metadata extractor', () => {
         const extracted = extractMetadata(props);
 
         expect(extracted).toEqual({
-            'Dev Name': {
+            devName: {
                 label: '',
                 propName: 'devName',
                 type: 'string'
             },
-            'Dev Name Two': {
+            devNameTwo: {
                 label: false,
                 propName: 'devNameTwo',
                 type: 'string'
             },
-            'Dev Name Three': {
+            devNameThree: {
                 label: null,
                 propName: 'devNameThree',
                 type: 'string'
@@ -548,65 +548,65 @@ describe('Metadata extractor', () => {
         const extracted = extractMetadata(props);
 
         expect(extracted).toEqual({
-            'Ui label': {
+            devName: {
                 label: 'Ui label',
                 propName: 'devName',
                 type: 'string'
             },
-            'Ui label two': {
+            devNameTwo: {
                 label: 'Ui label two',
                 propName: 'devNameTwo',
                 type: 'string'
             },
-            'Dev Name Three': {
+            devNameThree: {
                 propName: 'devNameThree',
                 type: 'number'
             },
-            'External Iframe': {
+            anIframe: {
                 label: 'External Iframe',
                 propName: 'anIframe',
                 type: 'embeddable',
                 objMeta: {
-                    'My embed label': {
+                    embedType: {
                         label: 'My embed label',
                         propName: 'embedType',
                         type: 'string'
                     },
-                    Url: {
+                    url: {
                         propName: 'url',
                         type: 'string'
                     },
-                    Height: {
+                    height: {
                         propName: 'height',
                         type: 'number'
                     }
                 }
             },
-            'My colors': {
+            colors: {
                 label: 'My colors',
                 propName: 'colors',
                 type: 'shape',
                 objMeta: {
-                    'My background color': {
+                    background: {
                         label: 'My background color',
                         propName: 'background',
                         type: 'color'
                     }
                 }
             },
-            'Array of shape': {
+            anArray: {
                 label: 'Array of shape',
                 propName: 'anArray',
                 type: 'arrayOf',
                 argType: {
                     type: 'shape',
                     objMeta: {
-                        'My Color': {
+                        color: {
                             label: 'My Color',
                             propName: 'color',
                             type: 'color'
                         },
-                        'Old Prop': {
+                        oldProp: {
                             propName: 'oldProp',
                             type: 'string'
                         }
@@ -635,12 +635,12 @@ describe('Metadata extractor', () => {
         const extracted = extractMetadata(props);
 
         expect(extracted).toEqual({
-            'My colors': {
+            colors: {
                 label: 'My colors',
                 propName: 'colors',
                 type: 'shape',
                 objMeta: {
-                    'My background color': {
+                    background: {
                         label: 'My background color',
                         propName: 'background',
                         type: 'color'
@@ -667,17 +667,124 @@ describe('Metadata extractor', () => {
         const extracted = extractMetadata(props);
 
         expect(extracted).toEqual({
-            'Ui label': {
+            devName: {
                 label: 'Ui label',
                 propName: 'devName',
                 type: 'string',
                 isPrivate: true,
                 tooltip: 'A tooltip'
             },
-            'Ui label two': {
+            devNameTwo: {
                 label: 'Ui label two',
                 propName: 'devNameTwo',
                 type: 'string'
+            }
+        });
+    });
+
+    it('Extracts metadata safely if labels are not unique', () => {
+        const props = {
+            devName: {
+                type: ElementPropTypes.string,
+                label: 'Ui label'
+            },
+            devNameTwo: {
+                type: ElementPropTypes.string,
+                label: 'Ui label'
+            }
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted).toEqual({
+            devName: {
+                label: 'Ui label',
+                propName: 'devName',
+                type: 'string'
+            },
+            devNameTwo: {
+                label: 'Ui label',
+                propName: 'devNameTwo',
+                type: 'string'
+            }
+        });
+    });
+    it('Extracts metadata safely if nested keys are not unique', () => {
+        const props = {
+            arrayOne: {
+                label: 'Array label',
+                type: ElementPropTypes.arrayOf(
+                    ElementPropTypes.shape({
+                        keyOne: {
+                            label: 'Ui label one',
+                            type: ElementPropTypes.string
+                        },
+                        keyTwo: {
+                            label: 'Ui label two',
+                            type: ElementPropTypes.string
+                        }
+                    })
+                )
+            },
+            arrayTwo: {
+                label: 'Array label',
+                type: ElementPropTypes.arrayOf(
+                    ElementPropTypes.shape({
+                        keyOne: {
+                            label: 'Ui label one',
+                            type: ElementPropTypes.string
+                        },
+                        keyTwo: {
+                            label: 'Ui label two',
+                            type: ElementPropTypes.string
+                        }
+                    })
+                )
+            }
+        };
+       
+        const extracted = extractMetadata(props);
+
+        expect(extracted).toEqual({
+            arrayOne: {
+                argType: {
+                    objMeta: {
+                        keyOne: {
+                            label: 'Ui label one',
+                            propName: 'keyOne',
+                            type: 'string'
+                        },
+                        keyTwo: {
+                            label: 'Ui label two',
+                            propName: 'keyTwo',
+                            type: 'string'
+                        }
+                    },
+                    type: 'shape'
+                },
+                label: 'Array label',
+                propName: 'arrayOne',
+                type: 'arrayOf'
+            },
+            arrayTwo: {
+                argType: {
+                    objMeta: {
+                        keyOne: {
+                            label: 'Ui label one',
+                            propName: 'keyOne',
+                            type: 'string'
+                        },
+                        keyTwo: {
+                            label: 'Ui label two',
+                            propName: 'keyTwo',
+                            type: 'string'
+                        }
+                    },
+                    type: 'shape'
+                },
+                label: 'Array label',
+                propName: 'arrayTwo',
+                type: 'arrayOf'
             }
         });
     });
