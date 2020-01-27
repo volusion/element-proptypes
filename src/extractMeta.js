@@ -2,6 +2,7 @@
 import { fromCamelToSentence } from './utils';
 
 const extractMetadata = props => {
+    // console.log("NOW EXTRACTING METADATA...")
     const extraction = {};
     Object.keys(props).forEach(key => {
         if (!props[key]) {
@@ -19,6 +20,7 @@ const extractMetadata = props => {
             tooltip: props[key].tooltip
         };
     });
+    // console.log("EXTRACTED: ", extraction)
     return extraction;
 };
 
