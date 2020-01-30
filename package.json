@@ -1,6 +1,6 @@
 {
   "name": "@volusion/element-proptypes",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "Wrapper around React PropTypes for adding metadata to the props",
   "author": "Volusion LLC",
   "license": "MIT",
