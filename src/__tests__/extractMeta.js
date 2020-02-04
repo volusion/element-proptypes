@@ -520,7 +520,6 @@ describe('Metadata extractor', () => {
 
     it('Extracts metadata from component type', () => {
         const props = {
-            // CustomComponent: ElementPropTypes.component("ComponentName")
             CustomComponent: ElementPropTypes.component("ComponentName")
         };
 
@@ -528,29 +527,7 @@ describe('Metadata extractor', () => {
 
         expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
             type: "component",
-            component: {
-                name: "ComponentName"
-            }
-        }));
-    });
-    it('Extracts metadata from component type', () => {
-        const props = {
-
-            CustomComponent: {
-                label: "A Menu Component",
-                type: ElementPropTypes.component("Menu")
-            }
-            // CustomComponent: ElementPropTypes.component("ComponentName")
-            // CustomComponent: ElementPropTypes.component("ComponentName")
-        };
-
-        const extracted = extractMetadata(props);
-
-        expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
-            type: "component",
-            component: {
-                name: "Menu"
-            }
+            allowedComponents: [ "ComponentName" ]
         }));
     });
 

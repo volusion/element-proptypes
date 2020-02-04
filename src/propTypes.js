@@ -109,7 +109,7 @@ const componentTypeChecker = name => {
 
     appliedChecker._meta = {
         type: 'component',
-        component: { name }
+        allowedComponents: [ name ]
     };
     appliedChecker.isRequired._meta = {
         ...appliedChecker._meta,
