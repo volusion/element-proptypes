@@ -103,9 +103,7 @@ const createShapeTypeChecker = type => shapeObj => {
 
 const componentTypeChecker = name => {
     console.log("COMPONENT TYPE CHECKER")
-    // return createEnumTypeChecker
     const appliedChecker = PropTypes.shape({ name });
-    // const objMeta = extractMetadata(shapeObj);
 
     appliedChecker._meta = {
         type: 'component',
