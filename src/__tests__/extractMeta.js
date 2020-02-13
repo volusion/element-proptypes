@@ -1,8 +1,6 @@
 import extractMetadata from '../extractMeta';
 import ElementPropTypes from '../propTypes';
 
-global.console.log = () => {}
-
 describe('Metadata extractor', () => {
     it('Extracts metadata from string prop', () => {
         const props = {

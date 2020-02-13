@@ -102,7 +102,6 @@ const createShapeTypeChecker = type => shapeObj => {
 };
 
 const componentTypeChecker = name => {
-    console.log("COMPONENT TYPE CHECKER")
     const appliedChecker = PropTypes.shape({ name });
 
     appliedChecker._meta = {
