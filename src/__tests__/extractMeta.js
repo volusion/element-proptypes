@@ -516,6 +516,19 @@ describe('Metadata extractor', () => {
         });
     });
 
+    it('Extracts metadata from component type', () => {
+        const props = {
+            CustomComponent: ElementPropTypes.component("ComponentName")
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
+            type: "component",
+            allowedComponents: [ "ComponentName" ]
+        }));
+    });
+
     it('Extracts metadata using provided ui label', () => {
         const props = {
             devName: {
