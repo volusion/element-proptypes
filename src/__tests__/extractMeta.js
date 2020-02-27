@@ -520,35 +520,33 @@ describe('Metadata extractor', () => {
         });
     });
 
-    describe("Extracts metadata from component type", () => {
-        it('Extracts metadata from component type', () => {
-            const props = {
-                CustomComponent: ElementPropTypes.component("ComponentName")
-            };
+    it('Extracts metadata from component type', () => {
+        const props = {
+            CustomComponent: ElementPropTypes.component("ComponentName")
+        };
 
-            const extracted = extractMetadata(props);
+        const extracted = extractMetadata(props);
 
-            expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
-                type: "component",
-                allowedComponents: [ "ComponentName" ]
-            }));
-        });
+        expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
+            type: "component",
+            allowedComponents: [ "ComponentName" ]
+        }));
+    });
 
-        it('Allows any component if no argument is passed', () => {
-            const props = {
-                CustomComponent: ElementPropTypes.component()
-            };
+    it('Sets metadata to allow any component if no argument is passed to component type', () => {
+        const props = {
+            CustomComponent: ElementPropTypes.component()
+        };
 
-            const extracted = extractMetadata(props);
+        const extracted = extractMetadata(props);
 
-            const allComponents = listAvailableComponents();
+        const allComponents = listAvailableComponents();
 
-            expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
-                type: "component",
-                allowedComponents: allComponents
-            }));
-        });
-    })
+        expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
+            type: "component",
+            allowedComponents: allComponents
+        }));
+    });
 
     it('Extracts metadata using provided ui label', () => {
         const props = {
