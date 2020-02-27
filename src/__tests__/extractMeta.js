@@ -1,5 +1,5 @@
-import extractMetadata from '../src/extractMeta';
-import ElementPropTypes from '../src/propTypes';
+import extractMetadata from '../extractMeta';
+import ElementPropTypes from '../propTypes';
 
 import { listAvailableComponents }from "@volusion/element-components";
 

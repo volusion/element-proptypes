@@ -22,6 +22,7 @@
     "test:watch": "jest --watch"
   },
   "jest": {
+    "rootDir": "src",
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     }
