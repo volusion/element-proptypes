@@ -1,7 +1,7 @@
 import extractMetadata from '../src/extractMeta';
 import ElementPropTypes from '../src/propTypes';
 
-import * as Components from "@volusion/element-components";
+import { listAvailableComponents }from "@volusion/element-components";
 
 jest.mock("@volusion/element-components")
 
@@ -541,7 +541,7 @@ describe('Metadata extractor', () => {
 
             const extracted = extractMetadata(props);
 
-            const allComponents = Components.listAvailableComponents();
+            const allComponents = listAvailableComponents();
 
             expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
                 type: "component",

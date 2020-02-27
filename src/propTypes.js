@@ -1,5 +1,6 @@
 /* eslint-disable security/detect-object-injection */
 import extractMetadata from './extractMeta';
+import { listAvailableComponents } from "@volusion/element-components";
 
 const PropTypes = {};
 
@@ -102,11 +103,15 @@ const createShapeTypeChecker = type => shapeObj => {
 };
 
 const componentTypeChecker = name => {
-    const appliedChecker = PropTypes.shape({ name });
+
+    const appliedChecker = PropTypes.shape();
+    let allowedComponents;
+    if(name) allowedComponents = [ name ];
+    else allowedComponents = listAvailableComponents();
 
     appliedChecker._meta = {
         type: 'component',
-        allowedComponents: [ name ]
+        allowedComponents
     };
     appliedChecker.isRequired._meta = {
         ...appliedChecker._meta,
