@@ -1,5 +1,9 @@
-import extractMetadata from '../extractMeta';
-import ElementPropTypes from '../propTypes';
+import extractMetadata from '../src/extractMeta';
+import ElementPropTypes from '../src/propTypes';
+
+import * as Components from "@volusion/element-components";
+
+jest.mock("@volusion/element-components")
 
 describe('Metadata extractor', () => {
     it('Extracts metadata from string prop', () => {
@@ -516,18 +520,35 @@ describe('Metadata extractor', () => {
         });
     });
 
-    it('Extracts metadata from component type', () => {
-        const props = {
-            CustomComponent: ElementPropTypes.component("ComponentName")
-        };
+    describe("Extracts metadata from component type", () => {
+        it('Extracts metadata from component type', () => {
+            const props = {
+                CustomComponent: ElementPropTypes.component("ComponentName")
+            };
 
-        const extracted = extractMetadata(props);
+            const extracted = extractMetadata(props);
 
-        expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
-            type: "component",
-            allowedComponents: [ "ComponentName" ]
-        }));
-    });
+            expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
+                type: "component",
+                allowedComponents: [ "ComponentName" ]
+            }));
+        });
+
+        it('Allows any component if no argument is passed', () => {
+            const props = {
+                CustomComponent: ElementPropTypes.component()
+            };
+
+            const extracted = extractMetadata(props);
+
+            const allComponents = Components.listAvailableComponents();
+
+            expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
+                type: "component",
+                allowedComponents: allComponents
+            }));
+        });
+    })
 
     it('Extracts metadata using provided ui label', () => {
         const props = {
