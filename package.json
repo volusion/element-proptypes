@@ -2,7 +2,7 @@
   "name": "@volusion/element-proptypes",
   "version": "1.1.0",
   "description": "Wrapper around React PropTypes for adding metadata to the props",
-  "author": "Volusion LLC",
+  "author": "Volusion, LLC",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -12,20 +12,6 @@
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "build": "rollup -c",
-    "watch": "rollup -c --watch",
-    "prepare": "npm run build && npm run test",
-    "release": "npm run prepare && np",
-    "test": "jest",
-    "test:watch": "jest --watch"
-  },
-  "jest": {
-    "rootDir": "src",
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    }
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -50,5 +36,15 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^4.0.0"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c --watch",
+    "prepare": "npm run lint && npm run build && npm run test",
+    "release": "npm run prepare && np",
+    "lint": "eslint ./src --ext .js",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest",
+    "test:watch": "jest --watch"
   }
 }
