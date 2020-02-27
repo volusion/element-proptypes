@@ -1,6 +1,9 @@
 import extractMetadata from '../extractMeta';
 import ElementPropTypes from '../propTypes';
 
+import { listAvailableComponents }from "@volusion/element-components";
+jest.mock("@volusion/element-components")
+
 describe('Metadata extractor', () => {
     it('Extracts metadata from string prop', () => {
         const props = {
@@ -526,6 +529,21 @@ describe('Metadata extractor', () => {
         expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
             type: "component",
             allowedComponents: [ "ComponentName" ]
+        }));
+    });
+
+    it('Sets metadata to allow any component if no argument is passed to component type', () => {
+        const props = {
+            CustomComponent: ElementPropTypes.component()
+        };
+
+        const extracted = extractMetadata(props);
+
+        const allComponents = listAvailableComponents();
+
+        expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
+            type: "component",
+            allowedComponents: allComponents
         }));
     });
 
