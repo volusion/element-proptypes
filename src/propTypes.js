@@ -103,7 +103,6 @@ const createShapeTypeChecker = type => shapeObj => {
 };
 
 const componentTypeChecker = name => {
-
     const appliedChecker = PropTypes.shape();
     let allowedComponents;
     if(name) allowedComponents = [ name ];
