@@ -386,13 +386,13 @@ describe('Metadata extractor', () => {
                 showInput: {
                     label: 'Enable search bar',
                     propName: 'showInput',
-                    type: 'bool',
+                    type: 'bool'
                 },
                 searchUrl: {
                     isPrivate: true,
                     label: 'Search page',
                     propName: 'searchUrl',
-                    type: 'string',
+                    type: 'string'
                 }
             }
         });
@@ -518,15 +518,17 @@ describe('Metadata extractor', () => {
 
     it('Extracts metadata from component type', () => {
         const props = {
-            CustomComponent: ElementPropTypes.component("ComponentName")
+            CustomComponent: ElementPropTypes.component('ComponentName')
         };
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['CustomComponent']).toEqual(expect.objectContaining({
-            type: "component",
-            allowedComponents: [ "ComponentName" ]
-        }));
+        expect(extracted['CustomComponent']).toEqual(
+            expect.objectContaining({
+                type: 'component',
+                allowedComponents: ['ComponentName']
+            })
+        );
     });
 
     it('Extracts metadata using provided ui label', () => {
@@ -840,7 +842,7 @@ describe('Metadata extractor', () => {
                 )
             }
         };
-       
+
         const extracted = extractMetadata(props);
 
         expect(extracted).toEqual({

@@ -29,9 +29,11 @@ function getShim() {
     PropTypes[type] = getShim();
 });
 
-['component', 'objectOf', 'arrayOf', 'oneOf', 'shape', 'embeddable'].forEach(type => {
-    PropTypes[type] = getShim;
-});
+['component', 'objectOf', 'arrayOf', 'oneOf', 'shape', 'embeddable'].forEach(
+    type => {
+        PropTypes[type] = getShim;
+    }
+);
 
 const defaults = {
     image: {
@@ -106,19 +108,19 @@ const componentTypeChecker = name => {
 
     appliedChecker._meta = {
         type: 'component',
-        allowedComponents: [ name ]
+        allowedComponents: [name]
     };
     appliedChecker.isRequired._meta = {
         ...appliedChecker._meta,
         isRequired: true
     };
     return appliedChecker;
-}
+};
 
-const createComponentTypeChecker = () => componentTypeChecker
+const createComponentTypeChecker = () => componentTypeChecker;
 
 const ElementPropTypes = {
-    _version: "1.0.17-0",
+    _version: '1.0.17-0',
     array: primitiveProp('array'),
     bool: primitiveProp('bool'),
     color: primitiveProp('color'),
@@ -138,7 +140,7 @@ const ElementPropTypes = {
     oneOf: createEnumTypeChecker,
     shape: createShapeTypeChecker('shape'),
     readOnly: primitiveProp('readOnly'),
-    component: createComponentTypeChecker(),
+    component: createComponentTypeChecker()
 };
 
 export default ElementPropTypes;
