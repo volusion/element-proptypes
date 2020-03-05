@@ -1,7 +1,7 @@
 import extractMetadata from '../extractMeta';
 import ElementPropTypes from '../propTypes';
 
-import { listAvailableComponents }from "@volusion/element-components";
+import { listAvailableComponents } from "@volusion/element-components";
 jest.mock("@volusion/element-components")
 
 describe('Metadata extractor', () => {
