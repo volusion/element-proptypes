@@ -8,9 +8,10 @@ const extractMetadata = (props = {}) => {
             return;
         }
         const propType = props[key].type ? props[key].type : props[key];
-        const label = props[key].label === undefined
-            ? fromCamelToSentence(key)
-            : props[key].label;
+        const label =
+            props[key].label === undefined
+                ? fromCamelToSentence(key)
+                : props[key].label;
         extraction[key] = {
             ...propType._meta,
             label,
