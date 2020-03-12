@@ -24,7 +24,9 @@ function getShim() {
     'sectionHeader',
     'editorFull',
     'editorMinimal',
-    'readOnly'
+    'readOnly',
+    'date',
+    'dateRange'
 ].forEach(type => {
     PropTypes[type] = getShim();
 });
@@ -134,6 +136,8 @@ const ElementPropTypes = {
     sectionHeader: primitiveProp('sectionHeader'),
     image: primitiveProp('image'),
     slider: primitiveProp('slider'),
+    date: primitiveProp('date'),
+    dateRange: primitiveProp('dateRange'),
     arrayOf: createTypeOfTypeChecker('arrayOf'),
     objectOf: createTypeOfTypeChecker('objectOf'),
     embeddable: createShapeTypeChecker('embeddable'),

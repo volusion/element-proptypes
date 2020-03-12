@@ -203,6 +203,50 @@ describe('Metadata extractor', () => {
         });
     });
 
+    it('Extracts metadata from date type', () => {
+        const props = {
+            dateProp: ElementPropTypes.date,
+            datePropRequired: ElementPropTypes.date.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['dateProp']).toEqual({
+            label: 'Date Prop',
+            propName: 'dateProp',
+            type: 'date'
+        });
+
+        expect(extracted['datePropRequired']).toEqual({
+            label: 'Date Prop Required',
+            propName: 'datePropRequired',
+            type: 'date',
+            isRequired: true
+        });
+    });
+
+    it('Extracts metadata from dateRange type', () => {
+        const props = {
+            dateRangeProp: ElementPropTypes.dateRange,
+            dateRangePropRequired: ElementPropTypes.dateRange.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['dateRangeProp']).toEqual({
+            label: 'Date Range Prop',
+            propName: 'dateRangeProp',
+            type: 'dateRange'
+        });
+
+        expect(extracted['dateRangePropRequired']).toEqual({
+            label: 'Date Range Prop Required',
+            propName: 'dateRangePropRequired',
+            type: 'dateRange',
+            isRequired: true
+        });
+    });
+
     it('Extracts metadata from editorMinimal type', () => {
         const props = {
             editorMinimalProp: ElementPropTypes.editorMinimal,
