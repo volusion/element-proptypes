@@ -206,7 +206,7 @@ describe('Metadata extractor', () => {
     it('Extracts metadata from date type', () => {
         const props = {
             dateProp: ElementPropTypes.date,
-            datePropIsRequired: ElementPropTypes.date.isRequired
+            datePropRequired: ElementPropTypes.date.isRequired
         };
 
         const extracted = extractMetadata(props);
@@ -217,9 +217,9 @@ describe('Metadata extractor', () => {
             type: 'date'
         });
 
-        expect(extracted['datePropIsRequired']).toEqual({
-            label: 'Date Prop Is Required',
-            propName: 'datePropIsRequired',
+        expect(extracted['datePropRequired']).toEqual({
+            label: 'Date Prop Required',
+            propName: 'datePropRequired',
             type: 'date',
             isRequired: true
         });
@@ -228,7 +228,7 @@ describe('Metadata extractor', () => {
     it('Extracts metadata from dateRange type', () => {
         const props = {
             dateRangeProp: ElementPropTypes.dateRange,
-            dateRangePropIsRequired: ElementPropTypes.dateRange.isRequired
+            dateRangePropRequired: ElementPropTypes.dateRange.isRequired
         };
 
         const extracted = extractMetadata(props);
@@ -239,9 +239,9 @@ describe('Metadata extractor', () => {
             type: 'dateRange'
         });
 
-        expect(extracted['dateRangePropIsRequired']).toEqual({
-            label: 'Date Range Prop Is Required',
-            propName: 'dateRangePropIsRequired',
+        expect(extracted['dateRangePropRequired']).toEqual({
+            label: 'Date Range Prop Required',
+            propName: 'dateRangePropRequired',
             type: 'dateRange',
             isRequired: true
         });
