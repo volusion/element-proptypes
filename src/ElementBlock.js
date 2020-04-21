@@ -46,19 +46,3 @@ export const configSchema = {
         )
     }
 };
-
-export const defaultConfig = {
-    isFullWidth: true,
-    hasHorizontalPadding: false,
-    topPadding: 'None',
-    bottomPadding: 'None',
-    showOnDesktop: true,
-    showOnTablet: true,
-    showOnMobile: true,
-    customAttrs: [
-        {
-            name: '',
-            value: ''
-        }
-    ]
-};
