@@ -1,5 +1,5 @@
 /* eslint-disable security/detect-object-injection */
-import extractMetadata from './extractMeta';
+import extract from './extract';
 
 const PropTypes = {};
 
@@ -92,7 +92,7 @@ const createEnumTypeChecker = expectedValues => {
 
 const createShapeTypeChecker = type => shapeObj => {
     const appliedChecker = PropTypes.shape(shapeObj);
-    const objMeta = extractMetadata(shapeObj);
+    const objMeta = extract(shapeObj);
 
     appliedChecker._meta = {
         type,

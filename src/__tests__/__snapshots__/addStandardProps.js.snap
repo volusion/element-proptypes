@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it adds the standard props to the config 1`] = `
+Object {
+  "bottomPadding": Object {
+    "isPrivate": undefined,
+    "label": "Top spacing",
+    "propName": "bottomPadding",
+    "tooltip": undefined,
+    "type": "oneOf",
+    "values": Array [
+      "None",
+      "Small",
+      "Medium",
+      "Large",
+    ],
+  },
+  "customAttrs": Object {
+    "argType": Object {
+      "objMeta": Object {
+        "name": Object {
+          "isPrivate": undefined,
+          "label": "Name",
+          "propName": "name",
+          "tooltip": "All entered values are automatically prefixed with \\"data-element-\\". Example: \\"data-element-your-custom-attribute-name\\"",
+          "type": "string",
+        },
+        "value": Object {
+          "isPrivate": undefined,
+          "label": "Value",
+          "propName": "value",
+          "tooltip": undefined,
+          "type": "string",
+        },
+      },
+      "type": "shape",
+    },
+    "isPrivate": undefined,
+    "label": "Custom element attributes",
+    "propName": "customAttrs",
+    "tooltip": undefined,
+    "type": "arrayOf",
+  },
+  "hasHorizontalPadding": Object {
+    "isPrivate": undefined,
+    "label": "Horizontal spacing",
+    "propName": "hasHorizontalPadding",
+    "tooltip": undefined,
+    "type": "bool",
+  },
+  "isFullWidth": Object {
+    "isPrivate": undefined,
+    "label": "Full width",
+    "propName": "isFullWidth",
+    "tooltip": undefined,
+    "type": "bool",
+  },
+  "showOnDesktop": Object {
+    "isPrivate": undefined,
+    "label": "Show on desktop",
+    "propName": "showOnDesktop",
+    "tooltip": undefined,
+    "type": "bool",
+  },
+  "showOnMobile": Object {
+    "isPrivate": undefined,
+    "label": "Show on mobile",
+    "propName": "showOnMobile",
+    "tooltip": undefined,
+    "type": "bool",
+  },
+  "showOnTablet": Object {
+    "isPrivate": undefined,
+    "label": "Show on tablet",
+    "propName": "showOnTablet",
+    "tooltip": undefined,
+    "type": "bool",
+  },
+  "topPadding": Object {
+    "isPrivate": undefined,
+    "label": "Top spacing",
+    "propName": "topPadding",
+    "tooltip": undefined,
+    "type": "oneOf",
+    "values": Array [
+      "None",
+      "Small",
+      "Medium",
+      "Large",
+    ],
+  },
+}
+`;
