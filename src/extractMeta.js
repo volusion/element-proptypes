@@ -1,26 +1,9 @@
 /* eslint-disable security/detect-object-injection */
-import { fromCamelToSentence } from './utils';
+import extract from './extract';
+import * as ElementBlock from './ElementBlock';
 
 const extractMetadata = (props = {}) => {
-    const extraction = {};
-    Object.keys(props).forEach(key => {
-        if (!props[key]) {
-            return;
-        }
-        const propType = props[key].type ? props[key].type : props[key];
-        const label =
-            props[key].label === undefined
-                ? fromCamelToSentence(key)
-                : props[key].label;
-        extraction[key] = {
-            ...propType._meta,
-            label,
-            propName: key,
-            isPrivate: props[key].isPrivate,
-            tooltip: props[key].tooltip
-        };
-    });
-    return extraction;
+    return extract({ ...ElementBlock.configSchema, ...props })
 };
 
-export default extractMetadata;
+export default extractMetadata

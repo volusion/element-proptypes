@@ -1,10 +1,11 @@
-import extractMetadata from '../extractMeta';
+import extractMetadata from '../extract';
 import ElementPropTypes from '../propTypes';
 
 describe('Metadata extractor', () => {
     it('fails gracefully when given bad input', () => {
         expect(() => extractMetadata()).not.toThrow();
     });
+
     it('Extracts metadata from string prop', () => {
         const props = {
             textProp: ElementPropTypes.string,
