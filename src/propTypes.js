@@ -26,17 +26,22 @@ function getShim() {
     'editorMinimal',
     'readOnly',
     'date',
-    'dateRange',
-    'icon'
+    'dateRange'
 ].forEach(type => {
     PropTypes[type] = getShim();
 });
 
-['component', 'objectOf', 'arrayOf', 'oneOf', 'shape', 'embeddable'].forEach(
-    type => {
-        PropTypes[type] = getShim;
-    }
-);
+[
+    'component',
+    'objectOf',
+    'arrayOf',
+    'oneOf',
+    'shape',
+    'embeddable',
+    'icon'
+].forEach(type => {
+    PropTypes[type] = getShim;
+});
 
 const defaults = {
     image: {
@@ -78,10 +83,10 @@ const createTypeOfTypeChecker = type => arrType => {
     return appliedChecker;
 };
 
-const createEnumTypeChecker = expectedValues => {
+const createEnumTypeChecker = type => expectedValues => {
     const appliedChecker = PropTypes.oneOf(expectedValues);
     appliedChecker._meta = {
-        type: 'oneOf',
+        type,
         values: expectedValues
     };
     appliedChecker.isRequired._meta = {
@@ -139,11 +144,11 @@ const ElementPropTypes = {
     slider: primitiveProp('slider'),
     date: primitiveProp('date'),
     dateRange: primitiveProp('dateRange'),
-    icon: primitiveProp('icon'),
     arrayOf: createTypeOfTypeChecker('arrayOf'),
     objectOf: createTypeOfTypeChecker('objectOf'),
     embeddable: createShapeTypeChecker('embeddable'),
-    oneOf: createEnumTypeChecker,
+    oneOf: createEnumTypeChecker('oneOf'),
+    icon: createEnumTypeChecker('icon'),
     shape: createShapeTypeChecker('shape'),
     readOnly: primitiveProp('readOnly'),
     component: createComponentTypeChecker()

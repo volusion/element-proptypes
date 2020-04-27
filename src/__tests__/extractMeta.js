@@ -355,22 +355,25 @@ describe('Metadata extractor', () => {
 
     it('Extracts metadata from icon prop', () => {
         const props = {
-            iconProp: ElementPropTypes.icon,
-            iconPropRequired: ElementPropTypes.icon.isRequired
+            someOptions: ElementPropTypes.icon(['icon1', 'icon2']),
+            someOptionsRequired: ElementPropTypes.icon(['icon1', 'icon2'])
+                .isRequired
         };
 
         const extracted = extractMetadata(props);
 
-        expect(extracted['iconProp']).toEqual({
-            label: 'Icon Prop',
-            propName: 'iconProp',
-            type: 'icon'
+        expect(extracted['someOptions']).toEqual({
+            label: 'Some Options',
+            propName: 'someOptions',
+            type: 'icon',
+            values: ['icon1', 'icon2']
         });
 
-        expect(extracted['iconPropRequired']).toEqual({
-            label: 'Icon Prop Required',
-            propName: 'iconPropRequired',
+        expect(extracted['someOptionsRequired']).toEqual({
+            label: 'Some Options Required',
+            propName: 'someOptionsRequired',
             type: 'icon',
+            values: ['icon1', 'icon2'],
             isRequired: true
         });
     });
