@@ -353,6 +353,28 @@ describe('Metadata extractor', () => {
         });
     });
 
+    it('Extracts metadata from icon prop', () => {
+        const props = {
+            iconProp: ElementPropTypes.icon,
+            iconPropRequired: ElementPropTypes.icon.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['iconProp']).toEqual({
+            label: 'Icon Prop',
+            propName: 'iconProp',
+            type: 'icon'
+        });
+
+        expect(extracted['iconPropRequired']).toEqual({
+            label: 'Icon Prop Required',
+            propName: 'iconPropRequired',
+            type: 'icon',
+            isRequired: true
+        });
+    });
+
     it('Extracts metadata from shape prop', () => {
         const props = {
             aShape: ElementPropTypes.shape({
