@@ -9,6 +9,7 @@
 		"esModuleInterop": true
 	},
 	"include": [
+		"./index.ts",
 		"src/**/*"
 	]
 }
