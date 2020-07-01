@@ -1,8 +1,8 @@
-const capitalize = (string: string) => {
+const capitalize = string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-const fromCamelToSentence = (camelCaseString: string) => {
+const fromCamelToSentence = camelCaseString => {
     return capitalize(camelCaseString.split(/(?=[A-Z])/).join(' '));
 };
 

@@ -1,11 +1,10 @@
 /* eslint-disable security/detect-object-injection */
 import { fromCamelToSentence } from './utils';
 
-const extractMetadata = (props: any = {}) => {
-    const extraction: Record<string, any> = {};
+const extractMetadata = (props = {}) => {
+    const extraction = {};
     Object.keys(props).forEach(key => {
-        const prop: any = props[key];
-        if (!prop) {
+        if (!props[key]) {
             return;
         }
         const propType = props[key].type ? props[key].type : props[key];
