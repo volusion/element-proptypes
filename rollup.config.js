@@ -15,8 +15,7 @@ function standardBuilds() {
                 babelHelpers: 'bundled',
                 extensions
             }),
-        ],
-        experimentalCodeSplitting: true
+        ]
     };
 }
 
