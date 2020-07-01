@@ -6,7 +6,7 @@ const extensions =  ['.ts', '.js'];
 
 function standardBuilds() {
     return {
-        input: ['index.js'],
+        input: ['index.ts'],
         output: [{ dir: 'lib', format: 'cjs' }, { dir: 'es', format: 'es' }],
         plugins: [
             resolve({
