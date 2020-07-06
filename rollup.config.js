@@ -1,20 +1,21 @@
-import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
+import babel from '@rollup/plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
+
+const extensions =  ['.ts', '.js'];
 
 function standardBuilds() {
     return {
-        input: ['index.js'],
+        input: ['index.ts'],
         output: [{ dir: 'lib', format: 'cjs' }, { dir: 'es', format: 'es' }],
         plugins: [
+            resolve({
+                extensions
+              }),
             babel({
-                exclude: ['node_modules/**'],
-                plugins: ['external-helpers', 'transform-object-rest-spread'],
-                babelrc: false,
-                presets: [['env', { modules: false }]]
+                babelHelpers: 'bundled',
+                extensions
             }),
-            commonjs() // so rollup can convert node modules to ESM if needed
-        ],
-        experimentalCodeSplitting: true
+        ]
     };
 }
 

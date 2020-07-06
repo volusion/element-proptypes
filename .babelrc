@@ -1,23 +1,6 @@
 {
-    "presets": [
-        [
-            "env",
-            {
-                "modules": false
-            }
-        ],
-        "stage-1",
-        "latest"
-    ],
-    "env": {
-        "test": {
-            "presets": [
-                [
-                    "env"
-                ],
-                "stage-1",
-                "latest"
-            ]
-        }
-    }
+	"presets": [
+        "@babel/preset-env",
+        "@babel/preset-typescript"
+	]
 }
