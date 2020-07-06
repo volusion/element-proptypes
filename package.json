@@ -38,7 +38,8 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "check-types": "tsc",
+    "compile": "tsc --pretty",
+    "compile:watch": "tsc --pretty --watch",
     "watch": "rollup -c --watch",
     "prep-release": "npm run test && npm run build",
     "release": "npm run prep-release && np",
