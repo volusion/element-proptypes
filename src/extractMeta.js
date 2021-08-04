@@ -16,6 +16,7 @@ const extractMetadata = (props = {}) => {
             ...propType._meta,
             label,
             propName: key,
+            isCollapsible: props[key].isCollapsible,
             isPrivate: props[key].isPrivate,
             tooltip: props[key].tooltip
         };
