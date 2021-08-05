@@ -1,9 +1,9 @@
 /* eslint-disable security/detect-object-injection */
 import { fromCamelToSentence } from './utils';
 
-const extractMetadata = (props = {}) => {
-    const extraction = {};
-    Object.keys(props).forEach(key => {
+const extractMetadata = (props: Record<string, any> = {}) => {
+    const extraction: Record<string, any> = {};
+    Object.keys(props).forEach((key) => {
         if (!props[key]) {
             return;
         }
@@ -16,8 +16,9 @@ const extractMetadata = (props = {}) => {
             ...propType._meta,
             label,
             propName: key,
+            isCollapsible: props[key].isCollapsible,
             isPrivate: props[key].isPrivate,
-            tooltip: props[key].tooltip
+            tooltip: props[key].tooltip,
         };
     });
     return extraction;
