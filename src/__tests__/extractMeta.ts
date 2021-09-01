@@ -168,13 +168,13 @@ describe('Metadata extractor', () => {
         const extracted = extractMetadata(props);
 
         expect(extracted['sectionHeaderProp']).toEqual({
-            label: 'Sub Header Prop',
+            label: 'Section Header Prop',
             propName: 'sectionHeaderProp',
             type: 'sectionHeader'
         });
 
         expect(extracted['sectionHeaderPropRequired']).toEqual({
-            label: 'Sub Header Prop Required',
+            label: 'Section Header Prop Required',
             propName: 'sectionHeaderPropRequired',
             type: 'sectionHeader',
             isRequired: true
@@ -190,13 +190,13 @@ describe('Metadata extractor', () => {
         const extracted = extractMetadata(props);
 
         expect(extracted['subHeaderProp']).toEqual({
-            label: 'Section Header Prop',
+            label: 'Sub Header Prop',
             propName: 'subHeaderProp',
             type: 'subHeader'
         });
 
         expect(extracted['subHeaderPropRequired']).toEqual({
-            label: 'Section Header Prop Required',
+            label: 'Sub Header Prop Required',
             propName: 'subHeaderPropRequired',
             type: 'subHeader',
             isRequired: true
