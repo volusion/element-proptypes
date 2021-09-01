@@ -29,6 +29,7 @@ let props = {
   optionalProduct: ElementPropTypes.product,
   optionalCategory: ElementPropTypes.category,
   optionalCategory: ElementPropTypes.sectionHeader,
+  optionalCategory: ElementPropTypes.subHeader,
   optionalImage: ElementPropTypes.image,
   optionalSlider: ElementPropTypes.slider,
   optionalMedia: ElementPropTypes.media,
@@ -45,6 +46,7 @@ let props = {
   requiredProduct: ElementPropTypes.product,
   requiredCategory: ElementPropTypes.category,
   requiredCategory: ElementPropTypes.sectionHeader,
+  requiredCategory: ElementPropTypes.subHeader,
   requiredImage: ElementPropTypes.image,
   requiredSlider: ElementPropTypes.slider,
   requiredMedia: ElementPropTypes.media,
@@ -124,6 +126,9 @@ const meta = extractMetadata(props);
   'Optional Section Header': {
       type: 'sectionHeader'
   },
+  'Optional Sub Header': {
+      type: 'subHeader'
+  },
   'Optional Media': {
       type: 'media'
   },
@@ -166,6 +171,10 @@ const meta = extractMetadata(props);
   },
   'Required Section Header': {
       type: 'sectionHeader',
+      isRequired: true
+  },
+  'Required Sub Header': {
+      type: 'subHeader',
       isRequired: true
   },
   'Required Media': {
@@ -416,6 +425,22 @@ You will also need to add a default value for the `mySectionHeader` property on 
 ```js
 defaultProps = {
     mySectionHeader = "The header text for this section of the block config editing form"
+}
+```
+
+### Using the subHeader proptype
+
+The `subHeader` proptype is not editable in Site Designer - it is included so that there can be a header within the props below a collapsible sectionHeader. When using the `subHeader` proptype within a block, you will need to add the prop to the block `configSpec`
+```js
+configSpec = {
+    mySubHeader: ElementPropTypes.subHeader
+}
+```
+
+You will also need to add a default value for the `mySubHeader` property on the `defaultProps` of the object
+```js
+defaultProps = {
+    mySubHeader = "The header text for this section of the block config editing form"
 }
 ```
 
