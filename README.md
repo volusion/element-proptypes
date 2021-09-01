@@ -430,7 +430,7 @@ defaultProps = {
 
 ### Using the subHeader proptype
 
-The `subHeader` proptype is not editable in Site Designer - it is included so that it can be used to format the contents of the block config edit form in Site Designer. When using the `subHeader` proptype within a block, you will need to add the prop to the block `configSpec`
+The `subHeader` proptype is not editable in Site Designer - it is included so that there can be a header within the props below a collapsible sectionHeader. When using the `subHeader` proptype within a block, you will need to add the prop to the block `configSpec`
 ```js
 configSpec = {
     mySubHeader: ElementPropTypes.subHeader
