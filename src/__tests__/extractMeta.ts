@@ -168,13 +168,13 @@ describe('Metadata extractor', () => {
         const extracted = extractMetadata(props);
 
         expect(extracted['sectionHeaderProp']).toEqual({
-            label: 'Section Header Prop',
+            label: 'Sub Header Prop',
             propName: 'sectionHeaderProp',
             type: 'sectionHeader'
         });
 
         expect(extracted['sectionHeaderPropRequired']).toEqual({
-            label: 'Section Header Prop Required',
+            label: 'Sub Header Prop Required',
             propName: 'sectionHeaderPropRequired',
             type: 'sectionHeader',
             isRequired: true
