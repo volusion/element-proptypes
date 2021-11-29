@@ -387,7 +387,7 @@ const meta = extractMetadata(props);
 
 ## Developing
 
-Note that this does _NOT_ use a non-npmjs registry, so if you were using that you'll need to `npm config set registry https://registry.npmjs.org`
+If you are using a non-npmjs registry, then you will need to run `npm config set registry https://registry.npmjs.org`
 
 ```bash
 npm install
@@ -581,7 +581,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ### Deployment
 
-You do not need to manually version this repo, the following command does it for you. It uses [npm np](https://www.npmjs.com/package/np).
+You do not need to manually update the package version, the following command does it for you. It uses [npm np](https://www.npmjs.com/package/np).
 
 `npm run release`
 
