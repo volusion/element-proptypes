@@ -873,7 +873,7 @@ describe('Metadata extractor', () => {
         });
     });
 
-    it('Extracts min/map properties if provided', () => {
+    it('Extracts min/max properties if provided', () => {
         const props = {
             devName: {
                 type: ElementPropTypes.number,
