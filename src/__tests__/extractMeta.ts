@@ -1,3 +1,4 @@
+import { numberLiteralTypeAnnotation } from '@babel/types';
 import extractMetadata from '../extractMeta';
 import ElementPropTypes from '../propTypes';
 
@@ -869,6 +870,28 @@ describe('Metadata extractor', () => {
                 label: 'Ui label two',
                 propName: 'devNameTwo',
                 type: 'string'
+            }
+        });
+    });
+
+    it('Extracts min/map properties if provided', () => {
+        const props = {
+            devName: {
+                type: ElementPropTypes.number,
+                min: 0,
+                max: 10
+            }
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted).toEqual({
+            devName: {
+                label: 'Dev Name',
+                propName: 'devName',
+                min: 0,
+                max: 10,
+                type: 'number'
             }
         });
     });
