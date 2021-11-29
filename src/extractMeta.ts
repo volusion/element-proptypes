@@ -18,6 +18,8 @@ const extractMetadata = (props: Record<string, any> = {}) => {
             propName: key,
             isCollapsible: props[key].isCollapsible,
             isPrivate: props[key].isPrivate,
+            max: props[key].max,
+            min: props[key].min,
             tooltip: props[key].tooltip,
         };
     });

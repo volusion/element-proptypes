@@ -873,6 +873,36 @@ describe('Metadata extractor', () => {
         });
     });
 
+    it('Extracts min/max properties if provided', () => {
+        const props = {
+            devName: {
+                type: ElementPropTypes.number,
+                min: 0,
+                max: 10
+            },
+            devNameTwo: {
+                type: ElementPropTypes.number,
+            }
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted).toEqual({
+            devName: {
+                label: 'Dev Name',
+                propName: 'devName',
+                min: 0,
+                max: 10,
+                type: 'number'
+            },
+            devNameTwo: {
+                label: 'Dev Name Two',
+                propName: 'devNameTwo',
+                type: 'number'
+            }
+        });
+    });
+
     it('Extracts metadata safely if labels are not unique', () => {
         const props = {
             devName: {
