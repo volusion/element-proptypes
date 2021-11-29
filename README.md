@@ -387,6 +387,8 @@ const meta = extractMetadata(props);
 
 ## Developing
 
+Note that this does _NOT_ use jfrog, so if you were using that you'll need to `npm config set registry https://registry.npmjs.org`
+
 ```bash
 npm install
 npm run build
