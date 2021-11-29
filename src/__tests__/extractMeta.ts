@@ -879,6 +879,9 @@ describe('Metadata extractor', () => {
                 type: ElementPropTypes.number,
                 min: 0,
                 max: 10
+            },
+            devNameTwo: {
+                type: ElementPropTypes.number,
             }
         };
 
@@ -890,6 +893,11 @@ describe('Metadata extractor', () => {
                 propName: 'devName',
                 min: 0,
                 max: 10,
+                type: 'number'
+            },
+            devNameTwo: {
+                label: 'Dev Name Two',
+                propName: 'devNameTwo',
                 type: 'number'
             }
         });
