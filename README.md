@@ -387,7 +387,7 @@ const meta = extractMetadata(props);
 
 ## Developing
 
-Note that this does _NOT_ use jfrog, so if you were using that you'll need to `npm config set registry https://registry.npmjs.org`
+Note that this does _NOT_ use a non-npmjs registry, so if you were using that you'll need to `npm config set registry https://registry.npmjs.org`
 
 ```bash
 npm install
@@ -580,6 +580,8 @@ The `vertical` prop allows you to orient the slider in a vertical direction rath
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/volusion/element-proptypes/tags).
 
 ### Deployment
+
+You do not need to manually version this repo, the following command does it for you. It uses [npm np](https://www.npmjs.com/package/np).
 
 `npm run release`
 
