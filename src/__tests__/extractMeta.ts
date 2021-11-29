@@ -1,4 +1,3 @@
-import { numberLiteralTypeAnnotation } from '@babel/types';
 import extractMetadata from '../extractMeta';
 import ElementPropTypes from '../propTypes';
 
