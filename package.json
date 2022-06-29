@@ -38,6 +38,7 @@
     "typescript": "^3.9.3"
   },
   "scripts": {
+    "audit:ci": "npx audit-ci --config .auditconfig.json",
     "build": "rollup -c",
     "compile": "tsc --pretty",
     "compile:watch": "tsc --pretty --watch",
