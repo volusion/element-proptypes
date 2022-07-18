@@ -397,6 +397,18 @@ describe('Metadata extractor', () => {
         });
     });
 
+
+    it('Returns a default config for the icon type', () => {
+        const props = {
+            iconProp: ElementPropTypes.icon
+        };
+        expect(props.iconProp.default).toEqual({
+            defaultFilter: '',
+            iconName: '',
+            iconPrefix: ''
+        });
+    });
+
     it('Extracts metadata from shape prop', () => {
         const props = {
             aShape: ElementPropTypes.shape({

@@ -30,6 +30,7 @@ let props = {
   optionalCategory: ElementPropTypes.category,
   optionalCategory: ElementPropTypes.sectionHeader,
   optionalCategory: ElementPropTypes.subHeader,
+  optionalIcon: ElementPropTypes.icon,
   optionalImage: ElementPropTypes.image,
   optionalSlider: ElementPropTypes.slider,
   optionalMedia: ElementPropTypes.media,
@@ -47,6 +48,7 @@ let props = {
   requiredCategory: ElementPropTypes.category,
   requiredCategory: ElementPropTypes.sectionHeader,
   requiredCategory: ElementPropTypes.subHeader,
+  requiredIcon: ElementPropTypes.icon,
   requiredImage: ElementPropTypes.image,
   requiredSlider: ElementPropTypes.slider,
   requiredMedia: ElementPropTypes.media,
@@ -249,6 +251,39 @@ const meta = extractMetadata(props);
         type: 'number'
       }
     },
+    isRequired: true
+  },
+  'Optional Icon': {
+    objMeta: {
+        'Icon Name': {
+            propName: 'iconName',
+            type: 'string'
+        },
+        'Icon Prefix': {
+            propName: 'iconPrefix',
+            type: 'string'
+        },
+        'Default Filter': {
+            propName: 'defaultFilter',
+            type: 'string'
+        },
+    }
+  },
+  'Required Image': {
+    objMeta: {
+        'Icon Name': {
+            propName: 'iconName',
+            type: 'string'
+        },
+        'Icon Prefix': {
+            propName: 'iconPrefix',
+            type: 'string'
+        },
+        'Default Filter': {
+            propName: 'defaultFilter',
+            type: 'string'
+        },
+    }
     isRequired: true
   },
   'Optional Image': {
@@ -495,6 +530,37 @@ defaultProps = {
 
 `url` is the site you want to load in the embedded iframe, and `height` is the number representing the height of
 the iframe.
+
+### Using the icon proptype
+
+The `icon` propType will launch an icon picker in Site Designer when editing the block config.
+
+Site Designer will populate the `icon` like this when an icon has been selected:
+
+```
+iconConfig: {
+    iconName: 'cart-shopping',
+    iconPrefix: 'fa',
+    defaultFilter: 'shopping',
+}
+```
+
+You can use `ElementPropTypes.icon.default` in your default props, which will return this:
+
+```
+{
+    iconName: '',
+    iconPrefix: '',
+    defaultFilter: '',
+}
+```
+
+And it would be used in default props like this:
+```
+defaultProps = {
+    iconConfig: ElementPropTypes.icon.default
+}
+```
 
 ### Using the image proptype
 

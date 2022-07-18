@@ -16,6 +16,7 @@ function getShim() {
     'string',
     'color',
     'number',
+    'icon',
     'image',
     'slider',
     'media',
@@ -40,6 +41,11 @@ function getShim() {
 );
 
 const defaults = {
+    icon: {
+        iconName: '',
+        iconPrefix: '',
+        defaultFilter: '',
+    },
     image: {
         uriBase: '',
         imagePath: '',
