@@ -397,7 +397,6 @@ describe('Metadata extractor', () => {
         });
     });
 
-
     it('Returns a default config for the icon type', () => {
         const props = {
             iconProp: ElementPropTypes.icon
@@ -406,6 +405,54 @@ describe('Metadata extractor', () => {
             defaultFilter: '',
             iconName: '',
             iconPrefix: ''
+        });
+    });
+
+    it('Extracts metadata from responsiveEdges prop', () => {
+        const props = {
+            edgesProp: ElementPropTypes.responsiveEdges,
+            edgesPropRequired: ElementPropTypes.responsiveEdges.isRequired
+        };
+
+        const extracted = extractMetadata(props);
+
+        expect(extracted['edgesProp']).toEqual({
+            label: 'Edges Prop',
+            propName: 'edgesProp',
+            type: 'responsiveEdges'
+        });
+
+        expect(extracted['edgesPropRequired']).toEqual({
+            label: 'Edges Prop Required',
+            propName: 'edgesPropRequired',
+            type: 'responsiveEdges',
+            isRequired: true
+        });
+    });
+
+    it('Returns a default config for the responsiveEdges type', () => {
+        const props = {
+            edgesProp: ElementPropTypes.responsiveEdges
+        };
+        expect(props.edgesProp.default).toEqual({
+            sm: {
+                t: 0,
+                r: 0,
+                b: 0,
+                l: 0,
+            },
+            md: {
+                t: 0,
+                r: 0,
+                b: 0,
+                l: 0,
+            },
+            lg: {
+                t: 0,
+                r: 0,
+                b: 0,
+                l: 0,
+            },
         });
     });
 
