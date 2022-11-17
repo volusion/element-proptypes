@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-object-injection */
 import extractMetadata from './extractMeta';
 
-const PropTypes = {};
+const PropTypes = {} as any;
 
 function getShim() {
     function shim() {}
