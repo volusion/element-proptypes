@@ -37,6 +37,7 @@ let props = {
   optionalEditorFull: ElementPropTypes.editorFull,
   optionalEditorMinimal: ElementPropTypes.editorMinimal,
   optionalReadOnly: ElementPropTypes.readOnly,
+  optionalResponsiveEdges: ElementPropTypes.responsiveEdges,
 
   // You can make them required too
   requiredArray: ElementPropTypes.array,
@@ -50,6 +51,7 @@ let props = {
   requiredCategory: ElementPropTypes.subHeader,
   requiredIcon: ElementPropTypes.icon,
   requiredImage: ElementPropTypes.image,
+  requiredResponsiveEdges: ElementPropTypes.responsiveEdges,
   requiredSlider: ElementPropTypes.slider,
   requiredMedia: ElementPropTypes.media,
   requiredEditorFull: ElementPropTypes.editorFull,
@@ -269,7 +271,7 @@ const meta = extractMetadata(props);
         },
     }
   },
-  'Required Image': {
+  'Required Icon': {
     objMeta: {
         'Icon Name': {
             propName: 'iconName',
@@ -333,6 +335,99 @@ const meta = extractMetadata(props);
             type: 'number'
         }
     },
+    isRequired: true
+  },
+  'Optional Responsive Edges': {
+    objMeta: {
+        sm: { // small - mobile
+            t: { // top
+                type: number;
+            },
+            r: { // right
+                type: number;
+            },
+            b: { // bottom
+                type: number;
+            },
+            l: { // left
+                type: number;
+            },
+        },
+        md: { // medium - tablet
+            t: { // top
+                type: number;
+            },
+            r: { // right
+                type: number;
+            },
+            b: { // bottom
+                type: number;
+            },
+            l: { // left
+                type: number;
+            },
+        },
+        lg: { // large - desktop
+            t: { // top
+                type: number;
+            },
+            r: { // right
+                type: number;
+            },
+            b: { // bottom
+                type: number;
+            },
+            l: { // left
+                type: number;
+            },
+        },
+    }
+  },
+  'Required Responsive Edges': {
+    objMeta: {
+        sm: { // small - mobile
+            t: { // top
+                type: number;
+            },
+            r: { // right
+                type: number;
+            },
+            b: { // bottom
+                type: number;
+            },
+            l: { // left
+                type: number;
+            },
+        },
+        md: { // medium - tablet
+            t: { // top
+                type: number;
+            },
+            r: { // right
+                type: number;
+            },
+            b: { // bottom
+                type: number;
+            },
+            l: { // left
+                type: number;
+            },
+        },
+        lg: { // large - desktop
+            t: { // top
+                type: number;
+            },
+            r: { // right
+                type: number;
+            },
+            b: { // bottom
+                type: number;
+            },
+            l: { // left
+                type: number;
+            },
+        },
+    }
     isRequired: true
   },
   'Optional Slider': {
@@ -559,6 +654,67 @@ And it would be used in default props like this:
 ```
 defaultProps = {
     iconConfig: ElementPropTypes.icon.default
+}
+```
+
+### Using the responsiveEdges proptype
+
+The `responsiveEdges` propType will display 3 target sizes, desktop, tablet, and mobile. Within each of those sizes it will have a numeric input field for the 4 edges of a CSS property such as margin or padding. Or maybe they are text inputs so that you can specify the unit.
+
+Site Designer will populate the `responsiveEdges` like this when the user puts the same values for all four edges, but different values for each target size:
+
+```
+responsiveEdges: {
+    sm: {
+        t: 10,
+        r: 10,
+        b: 10,
+        l: 10,
+    },
+    md: {
+        t: 8,
+        r: 8,
+        b: 8,
+        l: 8,
+    },
+    lg: {
+        t: 4,
+        r: 4,
+        b: 4,
+        l: 4,
+    },
+}
+```
+
+You can use `ElementPropTypes.responsiveEdges.default` in your default props, which will return this:
+
+```
+{
+    sm: {
+        t: 0,
+        r: 0,
+        b: 0,
+        l: 0,
+    },
+    md: {
+        t: 0,
+        r: 0,
+        b: 0,
+        l: 0,
+    },
+    lg: {
+        t: 0,
+        r: 0,
+        b: 0,
+        l: 0,
+    },
+}
+```
+
+And it would be used in default props like this:
+```
+defaultProps = {
+    responsiveEdgesConfig: ElementPropTypes.responsiveEdges.default
 }
 ```
 

@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-object-injection */
 import extractMetadata from './extractMeta';
 
-const PropTypes = {};
+const PropTypes = {} as any;
 
 function getShim() {
     function shim() {}
@@ -27,9 +27,9 @@ function getShim() {
     'editorFull',
     'editorMinimal',
     'readOnly',
+    'responsiveEdges',
     'date',
     'dateRange',
-    'icon'
 ].forEach(type => {
     PropTypes[type] = getShim();
 });
@@ -52,6 +52,26 @@ const defaults = {
         altText: '',
         width: 0,
         height: 0
+    },
+    responsiveEdges: {
+        sm: {
+            t: 0,
+            r: 0,
+            b: 0,
+            l: 0,
+        },
+        md: {
+            t: 0,
+            r: 0,
+            b: 0,
+            l: 0,
+        },
+        lg: {
+            t: 0,
+            r: 0,
+            b: 0,
+            l: 0,
+        },
     },
     slider: {
         min: 0,
@@ -154,6 +174,7 @@ const ElementPropTypes = {
     oneOf: createEnumTypeChecker,
     shape: createShapeTypeChecker('shape'),
     readOnly: primitiveProp('readOnly'),
+    responsiveEdges: primitiveProp('responsiveEdges'),
     component: createComponentTypeChecker()
 };
 

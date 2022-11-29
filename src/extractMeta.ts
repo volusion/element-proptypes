@@ -8,6 +8,7 @@ const extractMetadata = (props: Record<string, any> = {}) => {
             return;
         }
         const propType = props[key].type ? props[key].type : props[key];
+        console.log("%c 🕹️: extractMetadata -> propType ", "font-size:16px;background-color:#a3c961;color:black;", propType)
         const label =
             props[key].label === undefined
                 ? fromCamelToSentence(key)
