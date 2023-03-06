@@ -27,7 +27,7 @@ type FunctionalPropTypes =
     | 'oneOf'
     | 'shape'
     | 'embeddable';
-type AdvancedPropTypes = 'typography' | 'spacing' | 'gradient';
+type AdvancedPropTypes = 'typography' | 'spacing';
 
 type AllPropTypes = ClassicPropTypes | AdvancedPropTypes | FunctionalPropTypes;
 type PropTypesObject = { [k: string]: any };
@@ -65,11 +65,7 @@ classicPropTypes.forEach(type => {
     PropTypes[type] = getShim();
 });
 
-const advancedPropTypes: AdvancedPropTypes[] = [
-    'gradient',
-    'spacing',
-    'typography'
-];
+const advancedPropTypes: AdvancedPropTypes[] = ['spacing', 'typography'];
 
 advancedPropTypes.forEach(type => {
     PropTypes[type] = getShim();
@@ -211,8 +207,7 @@ const ElementPropTypes: ElementPropType = {
     component: createComponentTypeChecker(),
     // advanced types
     typography: primitiveProp('typography'),
-    spacing: primitiveProp('spacing'),
-    gradient: primitiveProp('gradient')
+    spacing: primitiveProp('spacing')
 };
 
 export default ElementPropTypes;
