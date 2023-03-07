@@ -1,7 +1,38 @@
 /* eslint-disable security/detect-object-injection */
 import extractMetadata from './extractMeta';
 
-const PropTypes = {};
+type ClassicPropTypes =
+    | 'array'
+    | 'bool'
+    | 'string'
+    | 'color'
+    | 'number'
+    | 'icon'
+    | 'image'
+    | 'slider'
+    | 'media'
+    | 'product'
+    | 'category'
+    | 'sectionHeader'
+    | 'subHeader'
+    | 'editorFull'
+    | 'editorMinimal'
+    | 'readOnly'
+    | 'date'
+    | 'dateRange';
+type FunctionalPropTypes =
+    | 'component'
+    | 'objectOf'
+    | 'arrayOf'
+    | 'oneOf'
+    | 'shape'
+    | 'embeddable';
+type AdvancedPropTypes = 'typography' | 'spacing';
+
+type AllPropTypes = ClassicPropTypes | AdvancedPropTypes | FunctionalPropTypes;
+type PropTypesObject = { [k: string]: any };
+
+const PropTypes: PropTypesObject = {};
 
 function getShim() {
     function shim() {}
@@ -10,7 +41,7 @@ function getShim() {
     return shim;
 }
 
-[
+const classicPropTypes: ClassicPropTypes[] = [
     'array',
     'bool',
     'string',
@@ -28,23 +59,36 @@ function getShim() {
     'editorMinimal',
     'readOnly',
     'date',
-    'dateRange',
-    'icon'
-].forEach(type => {
+    'dateRange'
+];
+classicPropTypes.forEach(type => {
     PropTypes[type] = getShim();
 });
 
-['component', 'objectOf', 'arrayOf', 'oneOf', 'shape', 'embeddable'].forEach(
-    type => {
-        PropTypes[type] = getShim;
-    }
-);
+const advancedPropTypes: AdvancedPropTypes[] = ['spacing', 'typography'];
 
-const defaults = {
+advancedPropTypes.forEach(type => {
+    PropTypes[type] = getShim();
+});
+
+const functionalPropTypes: FunctionalPropTypes[] = [
+    'component',
+    'objectOf',
+    'arrayOf',
+    'oneOf',
+    'shape',
+    'embeddable'
+];
+
+functionalPropTypes.forEach(type => {
+    PropTypes[type] = getShim;
+});
+
+const defaults: { [k: string]: any } = {
     icon: {
         iconName: '',
         iconPrefix: '',
-        defaultFilter: '',
+        defaultFilter: ''
     },
     image: {
         uriBase: '',
@@ -61,7 +105,7 @@ const defaults = {
     }
 };
 
-const primitiveProp = type => {
+const primitiveProp = (type: ClassicPropTypes | AdvancedPropTypes) => {
     const checker = PropTypes[type];
     checker._meta = { type };
     checker.isRequired._meta = { type, isRequired: true };
@@ -72,7 +116,7 @@ const primitiveProp = type => {
     return checker;
 };
 
-const createTypeOfTypeChecker = type => arrType => {
+const createTypeOfTypeChecker = (type: AllPropTypes) => (arrType: any) => {
     const appliedChecker = PropTypes[type](arrType);
     appliedChecker._meta = {
         type,
@@ -85,7 +129,7 @@ const createTypeOfTypeChecker = type => arrType => {
     return appliedChecker;
 };
 
-const createEnumTypeChecker = expectedValues => {
+const createEnumTypeChecker = (expectedValues: any) => {
     const appliedChecker = PropTypes.oneOf(expectedValues);
     appliedChecker._meta = {
         type: 'oneOf',
@@ -98,7 +142,7 @@ const createEnumTypeChecker = expectedValues => {
     return appliedChecker;
 };
 
-const createShapeTypeChecker = type => shapeObj => {
+const createShapeTypeChecker = (type: AllPropTypes) => (shapeObj: any) => {
     const appliedChecker = PropTypes.shape(shapeObj);
     const objMeta = extractMetadata(shapeObj);
 
@@ -113,7 +157,7 @@ const createShapeTypeChecker = type => shapeObj => {
     return appliedChecker;
 };
 
-const componentTypeChecker = name => {
+const componentTypeChecker = (name: AllPropTypes) => {
     const appliedChecker = PropTypes.shape({ name });
 
     appliedChecker._meta = {
@@ -129,8 +173,13 @@ const componentTypeChecker = name => {
 
 const createComponentTypeChecker = () => componentTypeChecker;
 
-const ElementPropTypes = {
+type ElementPropType = {
+    _version: string;
+    [key: string]: any;
+};
+const ElementPropTypes: ElementPropType = {
     _version: '1.0.17-0',
+    // classic types
     array: primitiveProp('array'),
     bool: primitiveProp('bool'),
     color: primitiveProp('color'),
@@ -148,13 +197,17 @@ const ElementPropTypes = {
     date: primitiveProp('date'),
     dateRange: primitiveProp('dateRange'),
     icon: primitiveProp('icon'),
+    readOnly: primitiveProp('readOnly'),
+    // functional types
     arrayOf: createTypeOfTypeChecker('arrayOf'),
     objectOf: createTypeOfTypeChecker('objectOf'),
     embeddable: createShapeTypeChecker('embeddable'),
     oneOf: createEnumTypeChecker,
     shape: createShapeTypeChecker('shape'),
-    readOnly: primitiveProp('readOnly'),
-    component: createComponentTypeChecker()
+    component: createComponentTypeChecker(),
+    // advanced types
+    typography: primitiveProp('typography'),
+    spacing: primitiveProp('spacing')
 };
 
 export default ElementPropTypes;
