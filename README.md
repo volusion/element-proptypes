@@ -61,7 +61,7 @@ let props = {
 
   // Or a required one
   requiredEnum: ElementPropTypes.oneOf(['News', 'Photos']).isRequired,
-  
+
   // An array of a certain type
   optionalArrayOf: ElementPropTypes.arrayOf(PropTypes.number),
 
@@ -430,6 +430,14 @@ npm run build
 ```
 
 Run `npm run build` every time you want to compile and transpile your code.
+
+### Adding new dependencies
+
+```bash
+mv ~/.npmrc ~/.npmrc.bak # If your default reposity is not npmjs.com
+npm install <dependency>
+mv ~/.npmrc.bak ~/.npmrc # If your default reposity is not npmjs.com
+```
 
 ### Using the product proptype
 
