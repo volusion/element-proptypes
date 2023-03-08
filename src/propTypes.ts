@@ -1,4 +1,4 @@
-/* eslint-disable security/detect-object-injection */
+/* eslint-disable no-undef,security/detect-object-injection */
 import extractMetadata from './extractMeta';
 
 type ClassicPropTypes =
@@ -61,13 +61,13 @@ const classicPropTypes: ClassicPropTypes[] = [
     'date',
     'dateRange'
 ];
-classicPropTypes.forEach(type => {
+classicPropTypes.forEach((type) => {
     PropTypes[type] = getShim();
 });
 
 const advancedPropTypes: AdvancedPropTypes[] = ['spacing', 'typography'];
 
-advancedPropTypes.forEach(type => {
+advancedPropTypes.forEach((type) => {
     PropTypes[type] = getShim();
 });
 
@@ -80,7 +80,7 @@ const functionalPropTypes: FunctionalPropTypes[] = [
     'embeddable'
 ];
 
-functionalPropTypes.forEach(type => {
+functionalPropTypes.forEach((type) => {
     PropTypes[type] = getShim;
 });
 

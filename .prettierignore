@@ -1,0 +1,9 @@
+/.vscode/**/*
+/docs
+/helm/**
+/deployment/**
+/dist/**
+/scripts/**
+README.md
+CHANGELOG.md
+.github/workflows/**/*

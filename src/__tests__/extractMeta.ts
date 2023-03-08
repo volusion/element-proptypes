@@ -397,7 +397,6 @@ describe('Metadata extractor', () => {
         });
     });
 
-
     it('Returns a default config for the icon type', () => {
         const props = {
             iconProp: ElementPropTypes.icon
@@ -893,7 +892,7 @@ describe('Metadata extractor', () => {
                 max: 10
             },
             devNameTwo: {
-                type: ElementPropTypes.number,
+                type: ElementPropTypes.number
             }
         };
 

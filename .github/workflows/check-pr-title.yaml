@@ -1,0 +1,36 @@
+name: 'Check PR Title'
+
+on:
+  pull_request:
+    types: 
+      - opened
+      - edited 
+      - reopened
+      - synchronize
+    
+    branches:
+      - main
+
+jobs: 
+  commitlint:
+    name: 'Check PR title' 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+
+        with:
+          node-version: 18.x
+          cache: npm
+ 
+      - name: Run commitlint
+        run: | 
+          npm config set registry https://volusion.jfrog.io/artifactory/api/npm/npm/
+          curl -u ${{secrets.JF_ARTIFACTORY_USER_NAME}}:${{secrets.JF_ARTIFACTORY_API_KEY}} https://volusion.jfrog.io/artifactory/api/npm/auth >> ~/.npmrc
+          echo "" >> ~/.npmrc
+          curl -u ${{secrets.JF_ARTIFACTORY_USER_NAME}}:${{secrets.JF_ARTIFACTORY_API_KEY}} https://volusion.jfrog.io/artifactory/api/npm/npm-material-dev/auth/material-dev >> ~/.npmrc   
+          npm install @commitlint/cli @commitlint/config-conventional
+          echo '${{ github.event.pull_request.title }}' | npx @commitlint/cli  
