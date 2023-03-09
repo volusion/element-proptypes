@@ -1,0 +1,32 @@
+name: release-please
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-please:
+    name: Release Please
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release-please
+        with:
+          release-type: node
+          package-name: "@volusion/element-proptypes"
+
+    outputs:
+      releases_created: ${{ steps.release-please.outputs.releases_created }}
+      release_version: ${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}.${{ steps.release-please.outputs.patch }}
+      release_sha: ${{ steps.release-please.outputs.sha }}
+      tag_name: ${{ steps.release-please.outputs.tag_name }}
+      
+  build:
+    name: Build Release
+    needs: release-please
+    if: ${{ needs.release-please.outputs.releases_created }}
+    uses: ./.github/workflows/build.yaml
+    with:
+      publish_package: true
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

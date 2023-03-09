@@ -1,0 +1,47 @@
+name: Build
+on:
+  pull_request:
+    branches:
+      - main
+
+  workflow_call:
+    inputs:
+      publish_package:
+        description: "Publish Package (for release)"
+        type: boolean
+        required: false
+        default: false
+
+    secrets:
+      NPM_TOKEN:
+        description: "NPMJS Token"
+        required: false
+
+jobs:
+  build:
+    name: Build Package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          token: ${{ secrets.NPM_TOKEN }}
+
+      - name: NPM Build
+        run: |
+          npm ci
+          npm run lint --if-present
+          npm run test --if-present
+          npm run build
+          npm pack
+
+      - name: Publish Package
+        if: ${{ inputs.publish_package }}
+        run: |
+          npm publish
+
