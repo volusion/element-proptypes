@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/volusion/element-proptypes/compare/v1.5.0...v1.5.1) (2023-03-15)
+
+
+### Bug Fixes
+
+* publish package script ([825dae0](https://github.com/volusion/element-proptypes/commit/825dae00862a880d1b83c982dfac9bdb05eba532))
+
 ## [1.5.0](https://github.com/volusion/element-proptypes/compare/v1.4.0...v1.5.0) (2023-03-09)
 
 
