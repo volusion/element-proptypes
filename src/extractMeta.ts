@@ -20,7 +20,7 @@ const extractMetadata = (props: Record<string, any> = {}) => {
             isPrivate: props[key].isPrivate,
             max: props[key].max,
             min: props[key].min,
-            tooltip: props[key].tooltip
+            tooltip: props[key].tooltip,
         };
     });
     return extraction;
