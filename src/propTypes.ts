@@ -27,12 +27,20 @@ type FunctionalPropTypes =
     | 'oneOf'
     | 'shape'
     | 'embeddable';
-type AdvancedPropTypes = 'typography' | 'spacing';
+type AdvancedPropTypes = 'typography' | 'spacing' | 'visibility';
 
 type AllPropTypes = ClassicPropTypes | AdvancedPropTypes | FunctionalPropTypes;
-type PropTypesObject = { [k: string]: any };
+type PropTypesObject = { [k in AllPropTypes]: any };
 
-const PropTypes: PropTypesObject = {};
+type Version = {
+    _version: string;
+};
+
+type ElementPropType = {
+    [k in AllPropTypes]: any;
+} & Version;
+
+const PropTypes = {} as PropTypesObject;
 
 function getShim() {
     function shim() {}
@@ -65,7 +73,11 @@ classicPropTypes.forEach((type) => {
     PropTypes[type] = getShim();
 });
 
-const advancedPropTypes: AdvancedPropTypes[] = ['spacing', 'typography'];
+const advancedPropTypes: AdvancedPropTypes[] = [
+    'spacing',
+    'typography',
+    'visibility'
+];
 
 advancedPropTypes.forEach((type) => {
     PropTypes[type] = getShim();
@@ -84,7 +96,7 @@ functionalPropTypes.forEach((type) => {
     PropTypes[type] = getShim;
 });
 
-const defaults: { [k: string]: any } = {
+const defaults = {
     icon: {
         iconName: '',
         iconPrefix: '',
@@ -103,7 +115,7 @@ const defaults: { [k: string]: any } = {
         stepSize: 1,
         selectedValue: 0
     }
-};
+} as PropTypesObject;
 
 const primitiveProp = (type: ClassicPropTypes | AdvancedPropTypes) => {
     const checker = PropTypes[type];
@@ -173,10 +185,6 @@ const componentTypeChecker = (name: AllPropTypes) => {
 
 const createComponentTypeChecker = () => componentTypeChecker;
 
-type ElementPropType = {
-    _version: string;
-    [key: string]: any;
-};
 const ElementPropTypes: ElementPropType = {
     _version: '1.0.17-0',
     // classic types
@@ -207,7 +215,8 @@ const ElementPropTypes: ElementPropType = {
     component: createComponentTypeChecker(),
     // advanced types
     typography: primitiveProp('typography'),
-    spacing: primitiveProp('spacing')
+    spacing: primitiveProp('spacing'),
+    visibility: primitiveProp('visibility')
 };
 
 export default ElementPropTypes;
