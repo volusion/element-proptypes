@@ -1,13 +1,44 @@
 /* eslint-disable no-undef,security/detect-object-injection */
 import extractMetadata from './extractMeta';
-import {
-    AdvancedPropTypes,
-    AllPropTypes,
-    ClassicPropTypes,
-    ElementPropType,
-    FunctionalPropTypes,
-    PropTypesObject
-} from './types';
+
+type ClassicPropTypes =
+    | 'array'
+    | 'bool'
+    | 'string'
+    | 'color'
+    | 'number'
+    | 'icon'
+    | 'image'
+    | 'slider'
+    | 'media'
+    | 'product'
+    | 'category'
+    | 'sectionHeader'
+    | 'subHeader'
+    | 'editorFull'
+    | 'editorMinimal'
+    | 'readOnly'
+    | 'date'
+    | 'dateRange';
+type FunctionalPropTypes =
+    | 'component'
+    | 'objectOf'
+    | 'arrayOf'
+    | 'oneOf'
+    | 'shape'
+    | 'embeddable';
+type AdvancedPropTypes = 'typography' | 'spacing' | 'visibility';
+
+type AllPropTypes = ClassicPropTypes | AdvancedPropTypes | FunctionalPropTypes;
+type PropTypesObject = { [k in AllPropTypes]: any };
+
+type Version = {
+    _version: string;
+};
+
+type ElementPropType = {
+    [k in AllPropTypes]: any;
+} & Version;
 
 const PropTypes = {} as PropTypesObject;
 
