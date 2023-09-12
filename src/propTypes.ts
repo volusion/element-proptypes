@@ -1,6 +1,13 @@
 /* eslint-disable no-undef,security/detect-object-injection */
 import extractMetadata from './extractMeta';
-import { AdvancedPropTypes, AllPropTypes, ClassicPropTypes, ElementPropType, FunctionalPropTypes, PropTypesObject } from './types';
+import {
+  AdvancedPropTypes,
+  AllPropTypes,
+  ClassicPropTypes,
+  ElementPropType,
+  FunctionalPropTypes,
+  PropTypesObject,
+} from './types';
 
 const PropTypes: PropTypesObject = {};
 
@@ -29,7 +36,7 @@ const classicPropTypes: ClassicPropTypes[] = [
   'editorMinimal',
   'readOnly',
   'date',
-  'dateRange'
+  'dateRange',
 ];
 classicPropTypes.forEach((type) => {
   PropTypes[type] = getShim();
@@ -38,7 +45,7 @@ classicPropTypes.forEach((type) => {
 const advancedPropTypes: AdvancedPropTypes[] = [
   'spacing',
   'typography',
-  'visibility'
+  'visibility',
 ];
 
 advancedPropTypes.forEach((type) => {
@@ -51,7 +58,7 @@ const functionalPropTypes: FunctionalPropTypes[] = [
   'arrayOf',
   'oneOf',
   'shape',
-  'embeddable'
+  'embeddable',
 ];
 
 functionalPropTypes.forEach((type) => {
@@ -62,21 +69,21 @@ const defaults: { [k: string]: any } = {
   icon: {
     iconName: '',
     iconPrefix: '',
-    defaultFilter: ''
+    defaultFilter: '',
   },
   image: {
     uriBase: '',
     imagePath: '',
     altText: '',
     width: 0,
-    height: 0
+    height: 0,
   },
   slider: {
     min: 0,
     max: 10,
     stepSize: 1,
-    selectedValue: 0
-  }
+    selectedValue: 0,
+  },
 };
 
 const primitiveProp = (type: ClassicPropTypes | AdvancedPropTypes) => {
@@ -94,11 +101,11 @@ const createTypeOfTypeChecker = (type: AllPropTypes) => (arrType: any) => {
   const appliedChecker = PropTypes[type](arrType);
   appliedChecker._meta = {
     type,
-    argType: arrType._meta
+    argType: arrType._meta,
   };
   appliedChecker.isRequired._meta = {
     ...appliedChecker._meta,
-    isRequired: true
+    isRequired: true,
   };
   return appliedChecker;
 };
@@ -107,11 +114,11 @@ const createEnumTypeChecker = (expectedValues: any) => {
   const appliedChecker = PropTypes.oneOf(expectedValues);
   appliedChecker._meta = {
     type: 'oneOf',
-    values: expectedValues
+    values: expectedValues,
   };
   appliedChecker.isRequired._meta = {
     ...appliedChecker._meta,
-    isRequired: true
+    isRequired: true,
   };
   return appliedChecker;
 };
@@ -122,11 +129,11 @@ const createShapeTypeChecker = (type: AllPropTypes) => (shapeObj: any) => {
 
   appliedChecker._meta = {
     type,
-    objMeta
+    objMeta,
   };
   appliedChecker.isRequired._meta = {
     ...appliedChecker._meta,
-    isRequired: true
+    isRequired: true,
   };
   return appliedChecker;
 };
@@ -136,11 +143,11 @@ const componentTypeChecker = (name: AllPropTypes) => {
 
   appliedChecker._meta = {
     type: 'component',
-    allowedComponents: [name]
+    allowedComponents: [name],
   };
   appliedChecker.isRequired._meta = {
     ...appliedChecker._meta,
-    isRequired: true
+    isRequired: true,
   };
   return appliedChecker;
 };
@@ -178,7 +185,7 @@ const ElementPropTypes: ElementPropType = {
   // advanced types
   typography: primitiveProp('typography'),
   spacing: primitiveProp('spacing'),
-  visibility: primitiveProp('visibility')
+  visibility: primitiveProp('visibility'),
 };
 
 export default ElementPropTypes;

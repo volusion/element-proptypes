@@ -1,32 +1,25 @@
 {
-    "parser": "@babel/eslint-parser",
-    "extends": [
-        "eslint:recommended",
-        "plugin:security/recommended",
-        "prettier"
-    ],
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true,
-        "jest": true
-    },
-    "plugins": [
-        "prettier",
-        "security"
-    ],
-    "rules": {
-        "no-const-assign": "error",
-        "no-var": "error",
-        "semi": "error",
-        "prefer-const": "error",
-        "prettier/prettier": [
-            "error",
-            {
-                "tabWidth": 2,
-                "singleQuote": true,
-                "trailingComma": "none"
-            }
-        ]
-    }
+  "parser": "@babel/eslint-parser",
+  "extends": ["eslint:recommended", "plugin:security/recommended", "prettier"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "plugins": ["prettier", "security"],
+  "rules": {
+    "no-const-assign": "error",
+    "no-var": "error",
+    "semi": "error",
+    "prefer-const": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "tabWidth": 4,
+        "singleQuote": true,
+        "trailingComma": "none"
+      }
+    ]
+  }
 }
