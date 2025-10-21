@@ -294,9 +294,7 @@ describe('Metadata extractor', () => {
     it('Extracts metadata from arrayOf prop', () => {
         const props = {
             someNumbers: ElementPropTypes.arrayOf(ElementPropTypes.number),
-            someNumbersRequired: ElementPropTypes.arrayOf(
-                ElementPropTypes.number
-            ).isRequired
+            someNumbersRequired: ElementPropTypes.arrayOf(ElementPropTypes.number).isRequired
         };
 
         const extracted = extractMetadata(props);
@@ -324,8 +322,7 @@ describe('Metadata extractor', () => {
     it('Extracts metadata from objectOf prop', () => {
         const props = {
             anObject: ElementPropTypes.objectOf(ElementPropTypes.string),
-            anObjectRequired: ElementPropTypes.objectOf(ElementPropTypes.string)
-                .isRequired
+            anObjectRequired: ElementPropTypes.objectOf(ElementPropTypes.string).isRequired
         };
 
         const extracted = extractMetadata(props);
@@ -353,8 +350,7 @@ describe('Metadata extractor', () => {
     it('Extracts metadata from oneOf prop', () => {
         const props = {
             someOptions: ElementPropTypes.oneOf(['bottom', 'top']),
-            someOptionsRequired: ElementPropTypes.oneOf(['bottom', 'top'])
-                .isRequired
+            someOptionsRequired: ElementPropTypes.oneOf(['bottom', 'top']).isRequired
         };
 
         const extracted = extractMetadata(props);
