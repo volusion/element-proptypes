@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.3](https://github.com/volusion/element-proptypes/compare/v1.5.2...v1.5.3) (2025-10-21)
+
+
+### Bug Fixes
+
+* ET-3991 Fixing vulnerabilities ([413ff74](https://github.com/volusion/element-proptypes/commit/413ff74fd829118f6aae083e0e57e75bd911d76c))
+
 ## [1.5.2](https://github.com/volusion/element-proptypes/compare/v1.5.1...v1.5.2) (2023-03-15)
 
 
