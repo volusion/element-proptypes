@@ -1,32 +1,8 @@
 /* eslint-disable no-undef,security/detect-object-injection */
 import extractMetadata from './extractMeta';
 
-type ClassicPropTypes =
-    | 'array'
-    | 'bool'
-    | 'string'
-    | 'color'
-    | 'number'
-    | 'icon'
-    | 'image'
-    | 'slider'
-    | 'media'
-    | 'product'
-    | 'category'
-    | 'sectionHeader'
-    | 'subHeader'
-    | 'editorFull'
-    | 'editorMinimal'
-    | 'readOnly'
-    | 'date'
-    | 'dateRange';
-type FunctionalPropTypes =
-    | 'component'
-    | 'objectOf'
-    | 'arrayOf'
-    | 'oneOf'
-    | 'shape'
-    | 'embeddable';
+type ClassicPropTypes = 'array' | 'bool' | 'string' | 'color' | 'number' | 'icon' | 'image' | 'slider' | 'media' | 'product' | 'category' | 'sectionHeader' | 'subHeader' | 'editorFull' | 'editorMinimal' | 'readOnly' | 'date' | 'dateRange';
+type FunctionalPropTypes = 'component' | 'objectOf' | 'arrayOf' | 'oneOf' | 'shape' | 'embeddable';
 type AdvancedPropTypes = 'typography' | 'spacing';
 
 type AllPropTypes = ClassicPropTypes | AdvancedPropTypes | FunctionalPropTypes;
@@ -41,26 +17,7 @@ function getShim() {
     return shim;
 }
 
-const classicPropTypes: ClassicPropTypes[] = [
-    'array',
-    'bool',
-    'string',
-    'color',
-    'number',
-    'icon',
-    'image',
-    'slider',
-    'media',
-    'product',
-    'category',
-    'sectionHeader',
-    'subHeader',
-    'editorFull',
-    'editorMinimal',
-    'readOnly',
-    'date',
-    'dateRange'
-];
+const classicPropTypes: ClassicPropTypes[] = ['array', 'bool', 'string', 'color', 'number', 'icon', 'image', 'slider', 'media', 'product', 'category', 'sectionHeader', 'subHeader', 'editorFull', 'editorMinimal', 'readOnly', 'date', 'dateRange'];
 classicPropTypes.forEach((type) => {
     PropTypes[type] = getShim();
 });
@@ -71,14 +28,7 @@ advancedPropTypes.forEach((type) => {
     PropTypes[type] = getShim();
 });
 
-const functionalPropTypes: FunctionalPropTypes[] = [
-    'component',
-    'objectOf',
-    'arrayOf',
-    'oneOf',
-    'shape',
-    'embeddable'
-];
+const functionalPropTypes: FunctionalPropTypes[] = ['component', 'objectOf', 'arrayOf', 'oneOf', 'shape', 'embeddable'];
 
 functionalPropTypes.forEach((type) => {
     PropTypes[type] = getShim;
